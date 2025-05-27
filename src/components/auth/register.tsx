@@ -1,8 +1,9 @@
 'use client';
 
+import { FormikButton } from '@vaa/components/button/button';
+import { InputField } from '@vaa/components/input/input-field';
 import { useRegister } from '@vaa/hooks/auth';
-import { Field, Form, Formik } from 'formik';
-import { twMerge } from 'tailwind-merge';
+import { Form, Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
@@ -28,26 +29,15 @@ export function Register() {
 		>
 			{({ isValid, touched }) => (
 				<Form>
-					<fieldset className="fieldset w-full">
-						<legend className="fieldset-legend">What is your name?</legend>
-						<Field
-							name="username"
-							type="text"
-							className="input w-full"
-							placeholder="Stephane? Type here"
-						/>
-						<p className="label">We're using it to create your account</p>
-					</fieldset>
+					<InputField
+						name="username"
+						label="What is your name?"
+						type="text"
+						placeholder="Stephane? Type here"
+					/>
+					<p className="label">We're using it to create your account</p>
 
-					<button
-						type="submit"
-						className={twMerge('btn btn-primary w-full', [
-							!isValid && 'btn-disabled',
-						])}
-						disabled={!(touched.username && isValid)}
-					>
-						Login
-					</button>
+					<FormikButton type="submit">Login</FormikButton>
 				</Form>
 			)}
 		</Formik>

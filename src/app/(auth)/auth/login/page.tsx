@@ -1,7 +1,5 @@
-'use client';
-
-import { Login } from '@vaa/components/auth/login';
 import { AuthPageHeader } from '@vaa/components/auth/auth-page-header';
+import { Login } from '@vaa/components/auth/login';
 
 export default async function VerifyPage() {
 	return (

@@ -1,11 +1,12 @@
 'use client';
 
+import { FormikButton } from '@vaa/components/button/button';
+import { InputField } from '@vaa/components/input/input-field';
 import { useLogin } from '@vaa/hooks/auth';
-import { Field, Form, Formik } from 'formik';
-import { twMerge } from 'tailwind-merge';
+import { Form, Formik } from 'formik';
+import { useSearchParams } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { useSearchParams } from 'next/navigation';
 
 const Schema = z.object({
 	username: z.string().min(1, 'Username is required'),
@@ -27,25 +28,14 @@ export function Login() {
 		>
 			{({ isValid, touched }) => (
 				<Form>
-					<fieldset className="fieldset w-full">
-						<legend className="fieldset-legend">Username</legend>
-						<Field
-							name="username"
-							type="text"
-							className="input w-full"
-							placeholder="Enter your username"
-						/>
-					</fieldset>
+					<InputField
+						name="username"
+						label="Username"
+						type="text"
+						placeholder="Enter your username"
+					/>
 
-					<button
-						type="submit"
-						className={twMerge('btn btn-primary w-full', [
-							!isValid && 'btn-disabled',
-						])}
-						disabled={!isValid}
-					>
-						Login
-					</button>
+					<FormikButton type="submit">Login</FormikButton>
 				</Form>
 			)}
 		</Formik>

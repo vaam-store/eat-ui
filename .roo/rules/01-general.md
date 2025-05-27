@@ -7,4 +7,6 @@
 - while naming files, use kebab-case.
 - Dumb components might be better off being server components.
 - Smart components if having browser logic, shall be client components.
+- Always use react-feather for basic icons (import { <Icon's name> } from 'react-feather')
+- this project make use of tailwind and daisyui. Check the corresponding rules.
 - Always check the project architecture, expressed through the file ARCHITECHTURE.md
