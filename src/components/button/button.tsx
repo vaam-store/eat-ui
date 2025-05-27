@@ -2,10 +2,19 @@ import { useFormikContext } from 'formik';
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { X } from 'react-feather';
 import { twMerge } from 'tailwind-merge';
+import {
+	getButtonColorClasses,
+	getButtonSizeClasses,
+	getButtonVariantClasses,
+	getIconSize,
+	getLoadingSizeClasses,
+} from './utils';
 
 interface BaseButtonOwnProps {
 	loading?: boolean;
-	size?: 'btn-xs' | 'btn-sm' | 'btn-md' | 'btn-lg' | 'btn-xl';
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	color?: string;
+	variant?: 'outline' | 'fill' | 'soft';
 }
 
 type BaseButtonProps<As extends ElementType = 'button'> = BaseButtonOwnProps &
@@ -20,6 +29,8 @@ export function BaseButton<As extends ElementType = 'button'>({
 	disabled,
 	size,
 	as,
+	color = 'primary',
+	variant = 'fill',
 	...props
 }: BaseButtonProps<As>) {
 	const Component = as || 'button';
@@ -28,17 +39,23 @@ export function BaseButton<As extends ElementType = 'button'>({
 	// Determine if the rendered component is a button to apply the native disabled attribute
 	const isButton = Component === 'button';
 
+	const colorClasses = getButtonColorClasses(color);
+	const variantClasses = getButtonVariantClasses(variant);
+	const sizeClasses = getButtonSizeClasses(size ?? '');
+
 	return (
 		<div className="relative w-full">
 			{loading && (
-				<div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
-					<div className='absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-primary border-r-primary' />
+				<div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+					<div className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-primary border-r-primary" />
 				</div>
 			)}
 			<Component
 				className={twMerge(
-					'btn btn-primary relative w-full',
-					size,
+					'btn relative w-full',
+					variantClasses,
+					colorClasses,
+					sizeClasses,
 					isDisabled && 'btn-disabled',
 					className,
 				)}
@@ -50,23 +67,11 @@ export function BaseButton<As extends ElementType = 'button'>({
 					<span
 						className={twMerge(
 							'loading loading-spinner',
-							size ? size.replace('btn-', 'loading-') : '',
+							getLoadingSizeClasses(size),
 						)}
 					/>
 				) : isDisabled && isButton ? ( // Only show X icon if disabled and it's a button
-					<X
-						size={
-							size === 'btn-xs'
-								? 12
-								: size === 'btn-sm'
-									? 16
-									: size === 'btn-lg'
-										? 24
-										: size === 'btn-xl'
-											? 28
-											: 20
-						}
-					/>
+					<X size={getIconSize(size)} />
 				) : (
 					children
 				)}
@@ -81,6 +86,7 @@ interface FormikButtonProps
 export function FormikButton({
 	className,
 	type = 'submit',
+	size = 'xl',
 	...props
 }: FormikButtonProps) {
 	const { isValid, isSubmitting } = useFormikContext();
@@ -94,7 +100,8 @@ export function FormikButton({
 			)}
 			disabled={!isValid || isSubmitting}
 			loading={isSubmitting}
-			type={type} // Pass type explicitly for button element
+			type={type}
+			size={size}
 			{...props}
 		/>
 	);

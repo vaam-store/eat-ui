@@ -10,3 +10,5 @@
 - Always use react-feather for basic icons (import { <Icon's name> } from 'react-feather')
 - this project make use of tailwind and daisyui. Check the corresponding rules.
 - Always check the project architecture, expressed through the file ARCHITECHTURE.md
+- Doing things like string concatenation with tailwind won't work. Always use full class name
+- Never write README files, unless asked to.

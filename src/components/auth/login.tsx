@@ -1,9 +1,10 @@
 'use client';
 
 import { FormikButton } from '@vaa/components/button/button';
+import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
 import { useLogin } from '@vaa/hooks/auth';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { useSearchParams } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
@@ -28,12 +29,14 @@ export function Login() {
 		>
 			{({ isValid, touched }) => (
 				<Form>
-					<InputField
-						name="username"
-						label="Username"
-						type="text"
-						placeholder="Enter your username"
-					/>
+					<FormGroup>
+						<InputField
+							name="username"
+							label="Username"
+							type="text"
+							placeholder="Enter your username"
+						/>
+					</FormGroup>
 
 					<FormikButton type="submit">Login</FormikButton>
 				</Form>
