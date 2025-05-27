@@ -1,0 +1,9 @@
+@use "@vymalo/ui-preset/dist/style";
+
+@import "tailwindcss";
+
+$dimension: 1.4em;
+
+hr {
+  @apply divider;
+}
