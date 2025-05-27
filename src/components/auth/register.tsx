@@ -10,7 +10,7 @@ const Schema = z.object({
 	username: z.string(),
 });
 
-export function RequestDeviceRegistration() {
+export function Register() {
 	const { register, isPending } = useRegister();
 
 	return (

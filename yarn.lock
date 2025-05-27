@@ -1600,6 +1600,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^12.14.0":
+  version: 12.14.0
+  resolution: "framer-motion@npm:12.14.0"
+  dependencies:
+    motion-dom: "npm:^12.14.0"
+    motion-utils: "npm:^12.12.1"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10c0/c6dc690bfd6737bb816f36b1ff05b379e5533b1df6fcfe2aed5537e7f30b069087313cdefb4006952412ee997bd40733a24d724b5cc12a69cf489219dad9de90
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^3.0.0":
   version: 3.0.3
   resolution: "fs-minipass@npm:3.0.3"
@@ -2206,6 +2228,22 @@ __metadata:
   bin:
     mkdirp: dist/cjs/src/bin.js
   checksum: 10c0/9f2b975e9246351f5e3a40dcfac99fcd0baa31fbfab615fe059fb11e51f10e4803c63de1f384c54d656e4db31d000e4767e9ef076a22e12a641357602e31d57d
+  languageName: node
+  linkType: hard
+
+"motion-dom@npm:^12.14.0":
+  version: 12.14.0
+  resolution: "motion-dom@npm:12.14.0"
+  dependencies:
+    motion-utils: "npm:^12.12.1"
+  checksum: 10c0/a51367ae45af014f80e2ec3151dd81f259b980a56621a78cd9ea80bfaf6d9e97b137e2e32251d5a70ce82914067b5d9b54d3a146a2fdc563c3e132eba89d7ac9
+  languageName: node
+  linkType: hard
+
+"motion-utils@npm:^12.12.1":
+  version: 12.12.1
+  resolution: "motion-utils@npm:12.12.1"
+  checksum: 10c0/880a174769d1be42b46cfb34af81b4a629c068d30d5cf7e07d249fbf2f5121d577482d3ea5bdc1db549c0288733e1e987efecb195fae350995270651559c6697
   languageName: node
   linkType: hard
 
@@ -3044,6 +3082,7 @@ __metadata:
     "@vymalo/ui-preset": "npm:^1.0.8"
     ai: "npm:^4.3.16"
     formik: "npm:^2.4.6"
+    framer-motion: "npm:^12.14.0"
     localforage: "npm:^1.10.0"
     next: "npm:^15.2.3"
     next-themes: "npm:^0.4.6"

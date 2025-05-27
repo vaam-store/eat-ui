@@ -1,4 +1,4 @@
-import { RequestDeviceRegistration } from '@vaa/components/auth/register';
+import { Register } from '@vaa/components/auth/register';
 
 export default async function LoginPage() {
 	return (
@@ -7,7 +7,7 @@ export default async function LoginPage() {
 				<h1 className="text-2xl text-bold">Create or Login!</h1>
 			</header>
 
-			<RequestDeviceRegistration />
+			<Register />
 		</div>
 	);
 }

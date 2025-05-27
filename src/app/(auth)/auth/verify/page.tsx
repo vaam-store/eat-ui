@@ -1,4 +1,4 @@
-import { DoLogin } from '@vaa/components/auth/login';
+import { Login } from '@vaa/components/auth/login';
 
 export default async function VerifyPage() {
 	return (
@@ -7,7 +7,7 @@ export default async function VerifyPage() {
 				<h1 className="text-2xl text-bold">Wait</h1>
 			</header>
 
-			<DoLogin />
+			<Login username="" />
 		</div>
 	);
 }

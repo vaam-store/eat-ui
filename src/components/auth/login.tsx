@@ -10,7 +10,7 @@ const Schema = z.object({
 
 export type DoLoginProps = z.infer<typeof Schema>;
 
-export function DoLogin({ username }: DoLoginProps) {
+export function Login({ username }: DoLoginProps) {
 	const { login, isPending } = useLogin();
 
 	const doLogin = useCallback(async () => {
