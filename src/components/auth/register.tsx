@@ -3,6 +3,7 @@
 import { useRegister } from '@vaa/hooks/auth';
 import { Field, Form, Formik } from 'formik';
 import { twMerge } from 'tailwind-merge';
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 
@@ -12,6 +13,7 @@ const Schema = z.object({
 
 export function Register() {
 	const { register, isPending } = useRegister();
+	const router = useRouter();
 
 	return (
 		<Formik
@@ -19,6 +21,7 @@ export function Register() {
 			onSubmit={async ({ username }, { resetForm }) => {
 				await register(username);
 				resetForm();
+				router.push(`/auth/login?username=${encodeURIComponent(username)}`);
 			}}
 			validationSchema={toFormikValidationSchema(Schema)}
 			initialValues={{ username: '' }}

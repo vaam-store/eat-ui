@@ -1,13 +1,13 @@
-import { Register } from '@vaa/components/auth/register';
+'use client';
 
-export default async function LoginPage() {
+import { Login } from '@vaa/components/auth/login';
+import { AuthPageHeader } from '@vaa/components/auth/auth-page-header';
+
+export default async function VerifyPage() {
 	return (
 		<div className="flex flex-col gap-4">
-			<header className="flex flex-col justify-center">
-				<h1 className="text-2xl text-bold">Create or Login!</h1>
-			</header>
-
-			<Register />
+			<AuthPageHeader title="Wait" />
+			<Login />
 		</div>
 	);
 }
