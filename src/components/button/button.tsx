@@ -2,6 +2,7 @@ import { useFormikContext } from 'formik';
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { X } from 'react-feather';
 import { twMerge } from 'tailwind-merge';
+import type { ButtonColor, ButtonSize, ButtonVariant } from './types';
 import {
 	getButtonColorClasses,
 	getButtonSizeClasses,
@@ -12,9 +13,9 @@ import {
 
 interface BaseButtonOwnProps {
 	loading?: boolean;
-	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-	color?: string;
-	variant?: 'outline' | 'fill' | 'soft';
+	size?: ButtonSize;
+	color?: ButtonColor;
+	variant?: ButtonVariant;
 }
 
 type BaseButtonProps<As extends ElementType = 'button'> = BaseButtonOwnProps &
