@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Formik } from 'formik';
-import { InputField } from './input-field';
+import { TextareaField } from './textarea-field';
 
-const withFormik = (Story: React.ComponentType) => (
+const withFormik = (Story: any) => (
   <Formik initialValues={{ story: '' }} onSubmit={() => {}}>
     {() => <Story />}
   </Formik>
 );
 
-const meta: Meta<typeof InputField> = {
-  title: 'Components/Input/InputField',
-  component: InputField,
+const meta: Meta<typeof TextareaField> = {
+  title: 'Components/Input/TextareaField',
+  component: TextareaField,
   tags: ['autodocs'],
   decorators: [withFormik],
   argTypes: {
@@ -43,11 +43,11 @@ const meta: Meta<typeof InputField> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof InputField>;
+type Story = StoryObj<typeof TextareaField>;
 
 export const Primary: Story = {
   args: {
-    label: 'Primary Input',
+    label: 'Primary Textarea',
     name: 'story',
     color: 'primary',
     size: 'md',
@@ -61,11 +61,11 @@ export const AllColors: Story = {
     <div className="flex flex-col gap-4">
       {['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'].map(
         (color) => (
-          <InputField
+          <TextareaField
             key={color}
             {...args}
-            color={color as import('./types').InputColor}
-            label={`${color.charAt(0).toUpperCase() + color.slice(1)} Input`}
+            color={color as import('./textarea-types').TextareaColor}
+            label={`${color.charAt(0).toUpperCase() + color.slice(1)} Textarea`}
             name={`story_${color}`}
             placeholder={`Type ${color}...`}
           />
@@ -83,11 +83,11 @@ export const AllSizes: Story = {
   render: (args) => (
     <div className="flex flex-col gap-4">
       {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => (
-        <InputField
+        <TextareaField
           key={size}
           {...args}
-          size={size as import('./types').InputSize}
-          label={`${size.toUpperCase()} Input`}
+          size={size as import('./textarea-types').TextareaSize}
+          label={`${size.toUpperCase()} Textarea`}
           name={`story_${size}`}
           placeholder={`Type ${size}...`}
         />
@@ -102,7 +102,7 @@ export const AllSizes: Story = {
 
 export const GhostVariant: Story = {
   args: {
-    label: 'Ghost Input',
+    label: 'Ghost Textarea',
     name: 'story_ghost',
     color: 'primary',
     size: 'md',

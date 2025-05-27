@@ -1,41 +1,41 @@
 import { useField } from 'formik';
-import type { InputHTMLAttributes } from 'react';
+import type { TextareaHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { InputColor, InputSize, InputVariant } from './types';
+import type { TextareaColor, TextareaSize, TextareaVariant } from './textarea-types';
 import {
-  getInputColorClasses,
-  getInputSizeClasses,
-  getInputVariantClasses,
-} from './utils';
+  getTextareaColorClasses,
+  getTextareaSizeClasses,
+  getTextareaVariantClasses,
+} from './textarea-utils';
 
-export interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface TextareaFieldProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
   label: string;
   name: string; // Formik field name
-  color?: InputColor;
-  size?: InputSize;
-  variant?: InputVariant;
+  color?: TextareaColor;
+  size?: TextareaSize;
+  variant?: TextareaVariant;
 }
 
-export function InputField({
+export function TextareaField({
   label,
   className,
   color = 'neutral',
   size = 'md',
   variant = 'default',
   ...props
-}: InputFieldProps) {
+}: TextareaFieldProps) {
   const [field, meta] = useField(props.name);
 
-  const colorClasses = getInputColorClasses(color);
-  const sizeClasses = getInputSizeClasses(size);
-  const variantClasses = getInputVariantClasses(variant);
+  const colorClasses = getTextareaColorClasses(color);
+  const sizeClasses = getTextareaSizeClasses(size);
+  const variantClasses = getTextareaVariantClasses(variant);
 
   return (
     <fieldset className="fieldset w-full">
       <legend className="fieldset-legend">{label}</legend>
-      <input
+      <textarea
         className={twMerge(
-          'input w-full',
+          'textarea w-full',
           colorClasses,
           sizeClasses,
           variantClasses,
