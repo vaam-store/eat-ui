@@ -10,9 +10,9 @@ export type { ButtonSize, ButtonColor, ButtonVariant } from './types';
 
 // Export utility functions
 export {
-  getButtonSizeClasses,
-  getButtonColorClasses,
-  getButtonVariantClasses,
-  getIconSize,
-  getLoadingSizeClasses
+	getButtonSizeClasses,
+	getButtonColorClasses,
+	getButtonVariantClasses,
+	getIconSize,
+	getLoadingSizeClasses,
 } from './utils';

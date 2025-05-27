@@ -1,9 +1,11 @@
-import type { ButtonSize, ButtonColor, ButtonVariant } from './types';
+import type { ButtonColor, ButtonSize, ButtonVariant } from './types';
 
 /**
  * Returns the appropriate button size class
  */
-export function getButtonSizeClasses(size: ButtonSize | string | undefined): string {
+export function getButtonSizeClasses(
+	size: ButtonSize | string | undefined,
+): string {
 	if (!size) return '';
 
 	switch (size) {
@@ -25,7 +27,9 @@ export function getButtonSizeClasses(size: ButtonSize | string | undefined): str
 /**
  * Returns the appropriate button color class
  */
-export function getButtonColorClasses(color: ButtonColor | string): string | null {
+export function getButtonColorClasses(
+	color: ButtonColor | string,
+): string | null {
 	switch (color) {
 		case 'primary':
 			return 'btn-primary';
@@ -51,7 +55,9 @@ export function getButtonColorClasses(color: ButtonColor | string): string | nul
 /**
  * Returns the appropriate button variant class
  */
-export function getButtonVariantClasses(variant: ButtonVariant | string): string | null {
+export function getButtonVariantClasses(
+	variant: ButtonVariant | string,
+): string | null {
 	switch (variant) {
 		case 'outline':
 			return 'btn-outline';
@@ -67,7 +73,9 @@ export function getButtonVariantClasses(variant: ButtonVariant | string): string
 /**
  * Returns the appropriate loading size class based on button size
  */
-export function getLoadingSizeClasses(size: ButtonSize | string | undefined): string {
+export function getLoadingSizeClasses(
+	size: ButtonSize | string | undefined,
+): string {
 	if (!size) return 'loading-md';
 
 	switch (size) {

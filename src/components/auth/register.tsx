@@ -14,7 +14,7 @@ const Schema = z.object({
 });
 
 export function Register() {
-	const { register, isPending } = useRegister();
+	const { register } = useRegister();
 	const router = useRouter();
 
 	return (

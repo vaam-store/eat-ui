@@ -14,7 +14,7 @@ const Schema = z.object({
 });
 
 export function Login() {
-	const { login, isPending } = useLogin();
+	const { login } = useLogin();
 	const searchParams = useSearchParams();
 	const initialUsername = searchParams.get('username') || '';
 

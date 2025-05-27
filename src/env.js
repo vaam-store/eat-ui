@@ -7,7 +7,9 @@ export const env = createEnv({
 	 * isn't built with invalid env vars.
 	 */
 	server: {
-		NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
+		NODE_ENV: z
+			.enum(['development', 'test', 'production'])
+			.default('development'),
 		OPENAI_API_KEY: z.string(),
 		OPENAI_API_BASE_URL: z.string().url(),
 		MEDUSA_API_KEY: z.string(),

@@ -2508,6 +2508,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-interactions@npm:^8.6.14":
+  version: 8.6.14
+  resolution: "@storybook/addon-interactions@npm:8.6.14"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    "@storybook/instrumenter": "npm:8.6.14"
+    "@storybook/test": "npm:8.6.14"
+    polished: "npm:^4.2.2"
+    ts-dedent: "npm:^2.2.0"
+  peerDependencies:
+    storybook: ^8.6.14
+  checksum: 10c0/953a6087a416f21355641bf3306aeaf8b8177a6e702148c07c26bbb1a2a25bc40ca19693760a7dc169813da0d4d3da005fbfd48cba6615391d72bddcdda95587
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-measure@npm:8.6.14":
   version: 8.6.14
   resolution: "@storybook/addon-measure@npm:8.6.14"
@@ -2538,6 +2553,17 @@ __metadata:
   peerDependencies:
     storybook: ^8.6.14
   checksum: 10c0/b54d71299a75588d7d424fb986433435d69974f4782986b7c4ef7db964bc9f85c75a07d5b0a2a0eec5b018284ddd4d4851e14fb4e131f41a6463fc16db234617
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-themes@npm:^8.6.14":
+  version: 8.6.14
+  resolution: "@storybook/addon-themes@npm:8.6.14"
+  dependencies:
+    ts-dedent: "npm:^2.0.0"
+  peerDependencies:
+    storybook: ^8.6.14
+  checksum: 10c0/6e04a6d99b87a4527bd2b98ef4b655b3bfc79cb17667fe3d773f02eda7998ee319a7ecadf6be79f2b0cf70d952aaf11d7009cff911e1a7cc2a794eed58dd28ea
   languageName: node
   linkType: hard
 
@@ -2669,33 +2695,6 @@ __metadata:
   peerDependencies:
     storybook: ^8.6.14
   checksum: 10c0/3f2cebd6046aea554d2e740c4d262005c580018dfcbcca8d9a589f9e893d407da405ace235595b3e110fb6ed21b840ff1645508a98764017ca5d1d4c56027172
-  languageName: node
-  linkType: hard
-
-"@storybook/experimental-addon-test@npm:^8.6.14":
-  version: 8.6.14
-  resolution: "@storybook/experimental-addon-test@npm:8.6.14"
-  dependencies:
-    "@storybook/global": "npm:^5.0.0"
-    "@storybook/icons": "npm:^1.2.12"
-    "@storybook/instrumenter": "npm:8.6.14"
-    "@storybook/test": "npm:8.6.14"
-    polished: "npm:^4.2.2"
-    prompts: "npm:^2.4.0"
-    ts-dedent: "npm:^2.2.0"
-  peerDependencies:
-    "@vitest/browser": ^2.1.1 || ^3.0.0
-    "@vitest/runner": ^2.1.1 || ^3.0.0
-    storybook: ^8.6.14
-    vitest: ^2.1.1 || ^3.0.0
-  peerDependenciesMeta:
-    "@vitest/browser":
-      optional: true
-    "@vitest/runner":
-      optional: true
-    vitest:
-      optional: true
-  checksum: 10c0/6e1bd9bf57f3993bee72b0b8652cf5df2cc75519c6ee03d022121ddd5df74c320cde2a2a6c161a67f3292899085fa50971819eace1c80e685c36a3fe7fa18838
   languageName: node
   linkType: hard
 
@@ -6361,13 +6360,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kleur@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "kleur@npm:3.0.3"
-  checksum: 10c0/cd3a0b8878e7d6d3799e54340efe3591ca787d9f95f109f28129bdd2915e37807bf8918bb295ab86afb8c82196beec5a1adcaf29042ce3f2bd932b038fe3aa4b
-  languageName: node
-  linkType: hard
-
 "lie@npm:3.1.1":
   version: 3.1.1
   resolution: "lie@npm:3.1.1"
@@ -7691,16 +7683,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prompts@npm:^2.4.0":
-  version: 2.4.2
-  resolution: "prompts@npm:2.4.2"
-  dependencies:
-    kleur: "npm:^3.0.3"
-    sisteransi: "npm:^1.0.5"
-  checksum: 10c0/16f1ac2977b19fe2cf53f8411cc98db7a3c8b115c479b2ca5c82b5527cd937aa405fa04f9a5960abeb9daef53191b53b4d13e35c1f5d50e8718c76917c5f1ea4
-  languageName: node
-  linkType: hard
-
 "prop-types@npm:^15.7.2":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
@@ -8523,13 +8505,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sisteransi@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "sisteransi@npm:1.0.5"
-  checksum: 10c0/230ac975cca485b7f6fe2b96a711aa62a6a26ead3e6fb8ba17c5a00d61b8bed0d7adc21f5626b70d7c33c62ff4e63933017a6462942c719d1980bb0b1207ad46
-  languageName: node
-  linkType: hard
-
 "smart-buffer@npm:^4.2.0":
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
@@ -9228,9 +9203,10 @@ __metadata:
     "@medusajs/js-sdk": "npm:^2.8.3"
     "@simplewebauthn/browser": "npm:^13.1.0"
     "@storybook/addon-essentials": "npm:^8.6.14"
+    "@storybook/addon-interactions": "npm:^8.6.14"
     "@storybook/addon-onboarding": "npm:^8.6.14"
+    "@storybook/addon-themes": "npm:^8.6.14"
     "@storybook/blocks": "npm:^8.6.14"
-    "@storybook/experimental-addon-test": "npm:^8.6.14"
     "@storybook/nextjs": "npm:^8.6.14"
     "@storybook/react": "npm:^8.6.14"
     "@storybook/test": "npm:^8.6.14"

@@ -13,7 +13,7 @@ export default function RootLayout({
 			</div>
 
 			<div id="auth" className="flex min-h-screen grow-4 flex-row bg-base-200">
-				<div className="flex min-h-screen w-full flex-col justify-between gap-4 bg-base-300 p-8 md:max-w-sm md:p-12">
+				<div className="flex min-h-screen w-full flex-col justify-between gap-4 bg-base-300 p-8 md:w-sm md:p-12">
 					<div>
 						<AuthHeader />
 						<AuthContentWrapper>{children}</AuthContentWrapper>
