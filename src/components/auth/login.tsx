@@ -1,6 +1,5 @@
 'use client';
 
-import { FormikButton } from '@vaa/components/button/button';
 import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
 import { useLogin } from '@vaa/hooks/auth';
@@ -9,6 +8,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { FormikButton } from '../button';
 
 const Schema = z.object({
 	username: z.string().min(1, 'Username is required'),

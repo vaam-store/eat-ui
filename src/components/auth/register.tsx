@@ -1,6 +1,6 @@
 'use client';
 
-import { FormikButton } from '@vaa/components/button/button';
+import { FormikButton } from '@vaa/components/button';
 import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
 import { useRegister } from '@vaa/hooks/auth';

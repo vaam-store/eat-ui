@@ -2,6 +2,7 @@
 
 import type { inferRouterOutputs } from '@trpc/server';
 import type { inferAsyncIterableYield } from '@trpc/server/unstable-core-do-not-import';
+import { BaseButton } from '@vaa/components/button';
 import type { AppRouter } from '@vaa/server/api/root';
 import { api } from '@vaa/trpc/react';
 import { useState } from 'react';
@@ -24,14 +25,27 @@ export function Chat() {
 
 	return (
 		<div className="stretch mx-auto flex w-full max-w-md flex-col py-24">
-			{messages.map((message) => (
-				<div key={message.id} className="whitespace-pre-wrap">
-					<div>{JSON.stringify(message)}</div>
-				</div>
-			))}
+			<div className="flex-grow space-y-2 overflow-y-auto p-4">
+				{messages.map((message) => (
+					<div key={message.id} className="chat chat-end">
+						<div className="chat-bubble">
+							{message.type === 'text-delta'
+								? message.textDelta
+								: JSON.stringify(message)}
+						</div>
+					</div>
+				))}
+			</div>
 
-			<form onSubmit={handleSubmit}>
-				<input placeholder="Say something..." />
+			<form onSubmit={handleSubmit} className="join w-full p-4">
+				<input
+					name="message"
+					placeholder="Say something..."
+					className="input input-bordered join-item flex-grow"
+				/>
+				<BaseButton type="submit" color="primary" className="join-item">
+					Send
+				</BaseButton>
 			</form>
 		</div>
 	);

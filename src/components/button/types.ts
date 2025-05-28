@@ -17,7 +17,13 @@ export type ButtonColor =
 	| 'error';
 
 // Button variants
-export type ButtonVariant = 'outline' | 'fill' | 'soft';
+export type ButtonVariant =
+	| 'outline'
+	| 'fill'
+	| 'soft'
+	| 'ghost'
+	| 'link'
+	| 'dash';
 
 // Icon sizes mapped to button sizes
 export type IconSizeMap = {

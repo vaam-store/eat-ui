@@ -254,8 +254,6 @@ docs:
   - uses: continuedev/vercel-edge-runtime
   - uses: starter/tailwind-docs
   - uses: vinstruments/tanstack-query-docs
-  - name: Motion React
-    startUrl: https://motion.dev/docs/react-quick-start
 
 prompts:
   - uses: continuedev/nextjs-optimizations-review

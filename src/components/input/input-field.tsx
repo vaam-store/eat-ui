@@ -32,22 +32,28 @@ export function InputField({
 	const variantClasses = getInputVariantClasses(variant);
 
 	return (
-		<fieldset className="fieldset w-full">
-			<legend className="fieldset-legend">{label}</legend>
+		<div className="form-control w-full">
+			<label className="label" htmlFor={props.id || props.name}>
+				<span className="label-text">{label}</span>
+			</label>
 			<input
+				id={props.id || props.name}
 				className={twMerge(
 					'input w-full',
 					colorClasses,
 					sizeClasses,
 					variantClasses,
+					meta.touched && meta.error ? 'input-error' : '',
 					className,
 				)}
 				{...field}
 				{...props}
 			/>
 			{meta.touched && meta.error ? (
-				<p className="label text-error">{meta.error}</p>
+				<div className="label">
+					<span className="label-text-alt text-error">{meta.error}</span>
+				</div>
 			) : null}
-		</fieldset>
+		</div>
 	);
 }

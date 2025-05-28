@@ -17,7 +17,7 @@ export function ToggleTheme() {
 	}
 
 	return (
-		<label className="toggle text-base-content">
+		<label className="swap swap-rotate">
 			<input
 				onChange={(e) => {
 					const newTheme = e.target.checked ? 'dark' : 'light';
@@ -29,8 +29,8 @@ export function ToggleTheme() {
 				className="theme-controller"
 			/>
 
-			<Sun className="swap-off size-4 fill-current" />
-			<Moon className="swap-on size-4 fill-current" />
+			<Sun className="swap-off size-5" />
+			<Moon className="swap-on size-5" />
 		</label>
 	);
 }

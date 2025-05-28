@@ -14,17 +14,3 @@ export {
 	getInputColorClasses,
 	getInputVariantClasses,
 } from './utils';
-/**
- * Textarea component exports
- */
-export { TextareaField } from './textarea-field';
-export type {
-	TextareaSize,
-	TextareaColor,
-	TextareaVariant,
-} from './textarea-types';
-export {
-	getTextareaSizeClasses,
-	getTextareaColorClasses,
-	getTextareaVariantClasses,
-} from './textarea-utils';

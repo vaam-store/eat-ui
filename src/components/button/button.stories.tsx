@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { BaseButton, FormikButton } from './button';
+import { BaseButton, FormikButton } from './';
 
 // Mock Formik context for FormikButton
 const FormikContext = React.createContext({

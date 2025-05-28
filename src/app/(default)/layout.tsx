@@ -1,3 +1,4 @@
+import { BaseButton } from '@vaa/components/button';
 import { ToggleTheme } from '@vaa/components/theme-toggle';
 import Link from 'next/link';
 
@@ -6,18 +7,27 @@ export default function RootLayout({
 	modal,
 }: Readonly<{ children: React.ReactNode; modal?: React.ReactNode }>) {
 	return (
-		<main>
-			<div className="container mx-auto hidden p-4 md:block">
-				<nav className="flex flex-row items-center justify-between gap-4">
-					<Link className="btn btn-primary" href="/auth/login">
+		<main className="min-h-screen">
+			<div className="navbar bg-base-100 shadow-sm">
+				<div className="navbar-start">
+					<BaseButton as={Link} href="/" variant="ghost" className="text-xl">
+						VAAM
+					</BaseButton>
+				</div>
+				<div className="navbar-end">
+					<BaseButton
+						as={Link}
+						href="/auth/login"
+						color="primary"
+						className="mr-2"
+					>
 						Login
-					</Link>
-
+					</BaseButton>
 					<ToggleTheme />
-				</nav>
+				</div>
 			</div>
 
-			<div id="welcome">{children}</div>
+			<div className="container mx-auto p-4">{children}</div>
 			<div id="modal">{modal}</div>
 		</main>
 	);

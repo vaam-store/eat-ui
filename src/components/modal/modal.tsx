@@ -1,10 +1,9 @@
 'use client';
 
-import { AnimatePresence, motion } from 'motion/react';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { BaseButton } from '../button';
 import { X } from 'react-feather';
+import { BaseButton } from '../button';
 
 type ModalProps = {
 	open: boolean;
@@ -25,27 +24,25 @@ export function Modal({ open, onClose, children, title }: ModalProps) {
 	}, [open, onClose]);
 
 	return (
-		<AnimatePresence>
+		<>
 			{open && (
-				<motion.dialog
+				<dialog
 					open
-					className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black/40 backdrop-blur"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					onClick={onClose}
+					className="modal modal-open modal-middle"
+					onCancel={onClose}
 				>
-					<motion.div
-						className="relative w-full max-w-md rounded-lg bg-base-100 p-6 shadow-lg"
-						initial={{ opacity: 0, scale: 0.95, y: 40 }}
-						animate={{ opacity: 1, scale: 1, y: 0 }}
-						exit={{ opacity: 0, scale: 0.95, y: 40 }}
-						transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+					<div
+						className="modal-box"
 						onClick={(e) => e.stopPropagation()}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.stopPropagation();
+							}
+						}}
+						tabIndex={-1}
 					>
-						<div className="flex flex-row items-center justify-between">
-							<h1 className="app-title">{title}</h1>
-
+						<div className="flex items-center justify-between">
+							<h3 className="font-bold text-lg">{title}</h3>
 							<BaseButton
 								circle
 								aria-label="Close modal"
@@ -55,10 +52,21 @@ export function Modal({ open, onClose, children, title }: ModalProps) {
 								<X />
 							</BaseButton>
 						</div>
-						{children}
-					</motion.div>
-				</motion.dialog>
+						<div className="py-4">{children}</div>
+					</div>
+					<div
+						className="modal-backdrop"
+						onClick={onClose}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								onClose();
+							}
+						}}
+						role="button"
+						tabIndex={0}
+					/>
+				</dialog>
 			)}
-		</AnimatePresence>
+		</>
 	);
 }

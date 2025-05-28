@@ -8,8 +8,8 @@ import {
 } from '@vaa/components/theme-toggle/constants';
 import { MedusaProvider } from '@vaa/medusa';
 import { TRPCReactProvider } from '@vaa/trpc/react';
-import { ThemeProvider } from 'next-themes';
 import { HydrateClient } from '@vaa/trpc/server';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
 	title: 'Create T3 App',
@@ -21,7 +21,7 @@ export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning data-theme="light">
 			<TRPCReactProvider>
 				<body>
 					<HydrateClient>

@@ -1,4 +1,3 @@
-import { useFormikContext } from 'formik';
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { X } from 'react-feather';
 import { twMerge } from 'tailwind-merge';
@@ -18,6 +17,7 @@ interface BaseButtonOwnProps {
 	variant?: ButtonVariant;
 	circle?: boolean;
 	block?: boolean;
+	disabled?: boolean;
 }
 
 type BaseButtonProps<As extends ElementType = 'button'> = BaseButtonOwnProps &
@@ -72,37 +72,10 @@ export function BaseButton<As extends ElementType = 'button'>({
 					)}
 				/>
 			) : isDisabled && isButton ? ( // Only show X icon if disabled and it's a button
-				<X size={getIconSize(size)} />
+				<X className="fill-current" size={getIconSize(size)} />
 			) : (
 				children
 			)}
 		</Component>
-	);
-}
-
-interface FormikButtonProps
-	extends ComponentPropsWithoutRef<typeof BaseButton> {}
-
-export function FormikButton({
-	className,
-	type = 'submit',
-	size = 'xl',
-	...props
-}: FormikButtonProps) {
-	const { isValid, isSubmitting } = useFormikContext();
-
-	return (
-		<BaseButton
-			as="button"
-			className={twMerge(
-				className,
-				(!isValid || isSubmitting) && 'btn-disabled',
-			)}
-			disabled={!isValid || isSubmitting}
-			loading={isSubmitting}
-			type={type}
-			size={size}
-			{...props}
-		/>
 	);
 }

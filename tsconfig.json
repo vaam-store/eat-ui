@@ -39,11 +39,11 @@
 	],
 	"exclude": [
 		"node_modules",
-    "coverage",
-    "storybook-static",
-    ".next",
-    "out",
-    "public",
-    "**/*.test.{ts,tsx}"
+		"coverage",
+		"storybook-static",
+		".next",
+		"out",
+		"public",
+		"**/*.test.{ts,tsx}"
 	]
 }

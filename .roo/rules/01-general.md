@@ -5,7 +5,7 @@
 - never export default components
 - medusaj is defined using a hoo. Check the medusa and the hooks folder.
 - always think about server components fwhere required, with suspense to stream
-- while naming files, use kebab-case.
+- Always while naming files, use kebab-case.
 - Dumb components might be better off being server components.
 - Smart components if having browser logic, shall be client components.
 - Always use react-feather for basic icons (import { <Icon's name> } from 'react-feather')
@@ -33,7 +33,6 @@
 
 - Follow Next.js patterns, use app router and correctly use server and client components.
 - Use Tailwind CSS for styling.
-- Use motion.dev for components.
 - Use TanStack Query (react-query) for frontend data fetching.
 - Use Formik for form handling.
 - Use Zod for validation.

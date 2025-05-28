@@ -62,9 +62,15 @@ export function getButtonVariantClasses(
 		case 'outline':
 			return 'btn-outline';
 		case 'fill':
-			return 'btn';
+			return '';
 		case 'soft':
 			return 'btn-soft';
+		case 'ghost':
+			return 'btn-ghost';
+		case 'link':
+			return 'btn-link';
+		case 'dash':
+			return 'btn-dash';
 		default:
 			return null;
 	}

@@ -3,8 +3,8 @@ import { Login } from '@vaa/components/auth/login';
 
 export default async function VerifyPage() {
 	return (
-		<div className="flex flex-col gap-4">
-			<AuthPageHeader title="Wait" />
+		<div className="form-control gap-6">
+			<AuthPageHeader title="Login" />
 			<Login />
 		</div>
 	);

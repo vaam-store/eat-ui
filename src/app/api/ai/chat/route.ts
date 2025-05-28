@@ -9,20 +9,20 @@ import { NextResponse } from 'next/server';
 // const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
-    try {
-        const { messages } = await req.json(); // Assuming messages are sent in the request body
+	try {
+		const { messages } = await req.json(); // Assuming messages are sent in the request body
 
-        // Basic echo response for now
-        if (messages && messages.length > 0) {
-            const lastMessage = messages[messages.length - 1];
-            return NextResponse.json({
-                reply: `You said: "${lastMessage.content}"`,
-            });
-        }
+		// Basic echo response for now
+		if (messages && messages.length > 0) {
+			const lastMessage = messages[messages.length - 1];
+			return NextResponse.json({
+				reply: `You said: "${lastMessage.content}"`,
+			});
+		}
 
-        // TODO: Replace with actual AI call and streaming response
-        // Example with Vercel AI SDK (ensure you have 'ai' package installed)
-        /*
+		// TODO: Replace with actual AI call and streaming response
+		// Example with Vercel AI SDK (ensure you have 'ai' package installed)
+		/*
         const response = await openai.createChatCompletion({
           model: 'gpt-3.5-turbo', // or your preferred model
           stream: true,
@@ -32,15 +32,15 @@ export async function POST(req: Request) {
         return new StreamingTextResponse(stream);
         */
 
-        return NextResponse.json(
-            { error: 'No messages provided' },
-            { status: 400 },
-        );
-    } catch (error) {
-        console.error('AI Chat Error:', error);
-        return NextResponse.json(
-            { error: 'Internal Server Error' },
-            { status: 500 },
-        );
-    }
+		return NextResponse.json(
+			{ error: 'No messages provided' },
+			{ status: 400 },
+		);
+	} catch (error) {
+		console.error('AI Chat Error:', error);
+		return NextResponse.json(
+			{ error: 'Internal Server Error' },
+			{ status: 500 },
+		);
+	}
 }
