@@ -1,0 +1,282 @@
+%YAML 1.1
+---
+name: NextJS Assistant
+version: 0.1.0
+schema: v1
+
+api_key: &api_key sk-5rSREHVs9X0sbObBPlDoxg
+
+model_defaults: &model_defaults
+  provider: openai
+  apiBase: https://litellm.ssg.home
+  apiKey: *api_key
+  env:
+    useLegacyCompletionsEndpoint: false
+  cacheBehavior:
+    cacheSystemMessage: true
+    cacheConversation: true
+
+mcpServers:
+  - name: sequential-thinking
+    command: docker
+    args:
+      - "run"
+      - "--rm"
+      - "-i"
+      - "mcp/sequentialthinking"
+  - name: fetch
+    command: docker
+    args:
+      - "run"
+      - "--rm"
+      - "-i"
+      - "mcp/fetch"
+  - name: Brave
+    command: docker
+    args:
+      - "run"
+      - "--rm"
+      - "-i"
+      - "-e"
+      - "BRAVE_API_KEY"
+      - "mcp/brave-search"
+    env:
+      BRAVE_API_KEY: "BSAKr3av5aHe1m_ZIwqQA7vbxe-kWXA"
+  - name: Memory
+    command: docker
+    args:
+      - "run"
+      - "-i"
+      - "--rm"
+      - "mcp/memory"
+
+models:
+  - <<: *model_defaults
+    name: Gemini 2.0 Flash
+    model: gemini-2.0-flash
+    roles:
+      - chat
+      - edit
+      - apply
+    defaultCompletionOptions:
+      contextLength: 1048576
+      maxTokens: 8192
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Gemini 2.5 Flash preview
+    model: gemini-2.5-flash-preview
+    roles:
+      - chat
+      - edit
+      - apply
+    defaultCompletionOptions:
+      contextLength: 1048576
+      maxTokens: 8192
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Gemini 2.5 Pro preview
+    model: gemini-2.5-pro-preview
+    roles:
+      - chat
+      - edit
+      - apply
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 1048576
+      maxTokens: 8192
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Qwen3 235b a22b
+    model: qwen3-235b-a22b
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 128000
+      maxTokens: 32768
+      temperature: 0
+      reasoning: true
+      reasoningBudgetTokens: 22000
+
+  - <<: *model_defaults
+    name: Llama4 Maverick Instruct Basic
+    model: llama4-maverick-instruct-basic
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+      - image_input
+    defaultCompletionOptions:
+      contextLength: 1047576
+      maxTokens: 32768
+      reasoning: true
+      temperature: 0
+
+  - <<: *model_defaults
+    name: GPT 4.1
+    model: gpt-4.1
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 1047576
+      maxTokens: 32768
+      temperature: 0
+
+  - <<: *model_defaults
+    name: o4 mini
+    model: o4-mini
+    roles:
+      - chat
+    capabilities:
+      - tool_use
+      - image_input
+    defaultCompletionOptions:
+      contextLength: 200000
+      maxTokens: 100000
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Claude 3.7 Sonnet
+    model: claude-3-7-sonnet
+    roles:
+      - chat
+    capabilities:
+      - tool_use
+      - image_input
+    defaultCompletionOptions:
+      contextLength: 200000
+      maxTokens: 8192
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Claude 3.5 Haiku
+    model: claude-3-5-haiku
+    roles:
+      - edit
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 200000
+      maxTokens: 8192
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Llama 3.3 70b-instruct
+    model: llama-v3p3-70b-instruct
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 128000
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Llama3.2 3b Apply
+    model: llama3.2-3b
+    roles:
+      - apply
+    defaultCompletionOptions:
+      contextLength: 128000
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Llama3.2 3b Apply
+    model: llama3.1-8b-instruct
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+    defaultCompletionOptions:
+      contextLength: 128000
+      temperature: 0
+
+  - <<: *model_defaults
+    name: Text embedding 3-small
+    model: text-embedding-3-small
+    roles:
+      - embed
+
+  - <<: *model_defaults
+    name: Voyage 3-large
+    model: voyage-3-large
+    roles:
+      - rerank
+
+  - <<: *model_defaults
+    name: Starcoder2 7b
+    model: starcoder2-7b
+    roles:
+      - autocomplete
+
+context:
+  - uses: continuedev/diff-context
+  - provider: codebase
+    params:
+      nRetrieve: 25
+      nFinal: 5
+      useReranking: true
+  - uses: continuedev/url-context
+  - uses: continuedev/folder-context
+  - uses: continuedev/terminal-context
+  - uses: continuedev/code-context
+  - uses: continuedev/file-context
+  - uses: continuedev/problems-context
+  - provider: docs
+  - provider: open
+    params:
+      onlyPinned: true
+  - provider: search
+  - provider: tree
+  - provider: os
+
+docs:
+  - uses: starter/nextjs-docs
+  - uses: continuedev/vercel-ai-sdk-docs
+  - uses: starter/react-docs
+  - uses: starter/zod-docs
+  - uses: continuedev/vercel-docs
+  - uses: continuedev/vercel-edge-runtime
+  - uses: starter/tailwind-docs
+  - uses: vinstruments/tanstack-query-docs
+  - name: Motion React
+    startUrl: https://motion.dev/docs/react-quick-start
+
+prompts:
+  - uses: continuedev/nextjs-optimizations-review
+  - uses: starter/client-component-prompt
+  - uses: starter/nextjs-api-route-prompt
+  - uses: starter/nextjs-page-prompt
+  - uses: starter/server-component-prompt
+
+rules:
+  - name: Testing
+    rule: Always run tests after you're done implementing a code for a typescript file, in a spec file.
+  - name: Web search
+    rule: Always search tech mentionned by a user locally and remotely on the web, because the user might have a different version than the known one.
+  - name: Memory
+    rule: Always save results of web search in memory to speed up subsequent requests. Also save every information possible that might be important.
+  - name: Sequential thinking
+    rule: Always think sequentially to realise a task and explicit steps.
+  - name: Web Save
+    rule: After each web search results should be indexed in the memory.
+  - name: Architecture
+    rule: |
+      - The project structure is described in the file Architecture.md
+      - It's important to respect it because it will help you to understand the projec
+
+  - uses: davide-balducci/react-rules
+  - uses: davide-balducci/docker-rules
+  - uses: starter/nextjs-rules

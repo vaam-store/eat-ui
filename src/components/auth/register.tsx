@@ -28,21 +28,19 @@ export function Register() {
 			validationSchema={toFormikValidationSchema(Schema)}
 			initialValues={{ username: '' }}
 		>
-			{({ isValid, touched }) => (
-				<Form>
-					<FormGroup>
-						<InputField
-							name="username"
-							label="What is your name?"
-							type="text"
-							placeholder="Stephane? Type here"
-						/>
-						<p className="label">We're using it to create your account</p>
-					</FormGroup>
+			<Form>
+				<FormGroup>
+					<InputField
+						name="username"
+						label="What is your name?"
+						type="text"
+						placeholder="Stephane? Type here"
+					/>
+					<p className="label">We're using it to create your account</p>
+				</FormGroup>
 
-					<FormikButton type="submit">Register</FormikButton>
-				</Form>
-			)}
+				<FormikButton type="submit">Register</FormikButton>
+			</Form>
 		</Formik>
 	);
 }

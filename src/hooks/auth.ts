@@ -6,10 +6,30 @@ import {
 	startAuthentication,
 	startRegistration,
 } from '@simplewebauthn/browser';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import type { CreateVendor, Vendor } from '@vaa/hooks/types';
 import { useMedusa } from '@vaa/medusa';
 import { useCallback } from 'react';
+
+/**
+ * Checks if a JWT token is present in Medusa's storage.
+ * Returns true if authenticated, false otherwise.
+ */
+export function useIsAuthenticated() {
+	const medusa = useMedusa();
+
+	return useQuery({
+		queryKey: ['get-auth'],
+		queryFn: async () => {
+			try {
+				return await medusa.auth.refresh();
+			} catch (e) {
+				console.error('cannot refresh', e);
+				return false;
+			}
+		},
+	});
+}
 
 export function useRegister() {
 	const { actualRegistrationFn, isPending: isPending_1 } =

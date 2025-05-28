@@ -4,7 +4,8 @@ import Link from 'next/link';
 
 export default function RootLayout({
 	children,
-}: Readonly<{ children: React.ReactNode }>) {
+	modal,
+}: Readonly<{ children: React.ReactNode; modal?: React.ReactNode }>) {
 	return (
 		<HydrateClient>
 			<div className="container mx-auto hidden p-4 md:block">
@@ -18,6 +19,7 @@ export default function RootLayout({
 			</div>
 
 			<div id="welcome">{children}</div>
+			{modal && <>{modal}</>}
 		</HydrateClient>
 	);
 }

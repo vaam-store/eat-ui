@@ -1,8 +1,12 @@
-'use client';
-
-import { medusaContext } from '@vaa/medusa/context';
 import { useContext } from 'react';
+import { medusaContext } from './context'; // Ensure correct path
 
 export function useMedusa() {
-	return useContext(medusaContext)!;
+	const contextValue = useContext(medusaContext);
+
+	if (!contextValue) {
+		throw new Error('useMedusa must be used within a MedusaContext.Provider');
+	}
+
+	return contextValue;
 }
