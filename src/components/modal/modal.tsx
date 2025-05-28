@@ -3,14 +3,17 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { BaseButton } from '../button';
+import { X } from 'react-feather';
 
 type ModalProps = {
 	open: boolean;
+	title: string;
 	onClose: () => void;
 	children: ReactNode;
 };
 
-export function Modal({ open, onClose, children }: ModalProps) {
+export function Modal({ open, onClose, children, title }: ModalProps) {
 	// Close on ESC key
 	useEffect(() => {
 		if (!open) return;
@@ -26,7 +29,7 @@ export function Modal({ open, onClose, children }: ModalProps) {
 			{open && (
 				<motion.dialog
 					open
-					className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur"
+					className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black/40 backdrop-blur"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
@@ -40,14 +43,18 @@ export function Modal({ open, onClose, children }: ModalProps) {
 						transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 						onClick={(e) => e.stopPropagation()}
 					>
-						<button
-							className="btn btn-ghost btn-sm absolute top-2 right-2"
-							aria-label="Close modal"
-							onClick={onClose}
-							type="button"
-						>
-							✕
-						</button>
+						<div className="flex flex-row items-center justify-between">
+							<h1 className="app-title">{title}</h1>
+
+							<BaseButton
+								circle
+								aria-label="Close modal"
+								onClick={onClose}
+								type="button"
+							>
+								<X />
+							</BaseButton>
+						</div>
 						{children}
 					</motion.div>
 				</motion.dialog>

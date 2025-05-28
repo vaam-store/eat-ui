@@ -1,5 +1,4 @@
 import { ToggleTheme } from '@vaa/components/theme-toggle';
-import { HydrateClient } from '@vaa/trpc/server';
 import Link from 'next/link';
 
 export default function RootLayout({
@@ -7,7 +6,7 @@ export default function RootLayout({
 	modal,
 }: Readonly<{ children: React.ReactNode; modal?: React.ReactNode }>) {
 	return (
-		<HydrateClient>
+		<main>
 			<div className="container mx-auto hidden p-4 md:block">
 				<nav className="flex flex-row items-center justify-between gap-4">
 					<Link className="btn btn-primary" href="/auth/login">
@@ -19,7 +18,7 @@ export default function RootLayout({
 			</div>
 
 			<div id="welcome">{children}</div>
-			{modal && <>{modal}</>}
-		</HydrateClient>
+			<div id="modal">{modal}</div>
+		</main>
 	);
 }

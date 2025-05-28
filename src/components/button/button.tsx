@@ -16,6 +16,8 @@ interface BaseButtonOwnProps {
 	size?: ButtonSize;
 	color?: ButtonColor;
 	variant?: ButtonVariant;
+	circle?: boolean;
+	block?: boolean;
 }
 
 type BaseButtonProps<As extends ElementType = 'button'> = BaseButtonOwnProps &
@@ -32,6 +34,8 @@ export function BaseButton<As extends ElementType = 'button'>({
 	as,
 	color = 'primary',
 	variant = 'fill',
+	circle = false,
+	block = false,
 	...props
 }: BaseButtonProps<As>) {
 	const Component = as || 'button';
@@ -45,39 +49,34 @@ export function BaseButton<As extends ElementType = 'button'>({
 	const sizeClasses = getButtonSizeClasses(size ?? '');
 
 	return (
-		<div className="relative w-full">
-			{loading && (
-				<div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-					<div className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-primary border-r-primary" />
-				</div>
+		<Component
+			className={twMerge(
+				'btn relative',
+				variantClasses,
+				colorClasses,
+				sizeClasses,
+				isDisabled && 'btn-disabled',
+				circle && 'btn-circle',
+				block && 'w-full',
+				className,
 			)}
-			<Component
-				className={twMerge(
-					'btn relative w-full',
-					variantClasses,
-					colorClasses,
-					sizeClasses,
-					isDisabled && 'btn-disabled',
-					className,
-				)}
-				// Apply native disabled attribute only if it's a button
-				{...(isButton ? { disabled: isDisabled } : {})}
-				{...props}
-			>
-				{loading ? (
-					<span
-						className={twMerge(
-							'loading loading-spinner',
-							getLoadingSizeClasses(size),
-						)}
-					/>
-				) : isDisabled && isButton ? ( // Only show X icon if disabled and it's a button
-					<X size={getIconSize(size)} />
-				) : (
-					children
-				)}
-			</Component>
-		</div>
+			// Apply native disabled attribute only if it's a button
+			{...(isButton ? { disabled: isDisabled } : {})}
+			{...props}
+		>
+			{loading ? (
+				<span
+					className={twMerge(
+						'loading loading-spinner',
+						getLoadingSizeClasses(size),
+					)}
+				/>
+			) : isDisabled && isButton ? ( // Only show X icon if disabled and it's a button
+				<X size={getIconSize(size)} />
+			) : (
+				children
+			)}
+		</Component>
 	);
 }
 

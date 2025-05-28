@@ -137,6 +137,7 @@ models:
     model: o4-mini
     roles:
       - chat
+      - edit
     capabilities:
       - tool_use
       - image_input
@@ -150,6 +151,7 @@ models:
     model: claude-3-7-sonnet
     roles:
       - chat
+      - edit
     capabilities:
       - tool_use
       - image_input
@@ -162,6 +164,7 @@ models:
     name: Claude 3.5 Haiku
     model: claude-3-5-haiku
     roles:
+      - chat
       - edit
     capabilities:
       - tool_use
@@ -275,7 +278,7 @@ rules:
   - name: Architecture
     rule: |
       - The project structure is described in the file Architecture.md
-      - It's important to respect it because it will help you to understand the projec
+      - It's important to respect it because it will help you to understand the project
 
   - uses: davide-balducci/react-rules
   - uses: davide-balducci/docker-rules

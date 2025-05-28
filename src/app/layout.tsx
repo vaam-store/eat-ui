@@ -9,6 +9,7 @@ import {
 import { MedusaProvider } from '@vaa/medusa';
 import { TRPCReactProvider } from '@vaa/trpc/react';
 import { ThemeProvider } from 'next-themes';
+import { HydrateClient } from '@vaa/trpc/server';
 
 export const metadata: Metadata = {
 	title: 'Create T3 App',
@@ -21,13 +22,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body>
-				<ThemeProvider themes={mainThemes} storageKey={themeDataKey}>
-					<MedusaProvider>
-						<TRPCReactProvider>{children}</TRPCReactProvider>
-					</MedusaProvider>
-				</ThemeProvider>
-			</body>
+			<TRPCReactProvider>
+				<body>
+					<HydrateClient>
+						<ThemeProvider themes={mainThemes} storageKey={themeDataKey}>
+							<MedusaProvider>{children}</MedusaProvider>
+						</ThemeProvider>
+					</HydrateClient>
+				</body>
+			</TRPCReactProvider>
 		</html>
 	);
 }
