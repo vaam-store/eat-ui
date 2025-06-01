@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-type GeolocationState = {
+export type GeolocationState = {
 	latitude: number | null;
 	longitude: number | null;
 	error: Error | null;
@@ -14,7 +14,7 @@ export function useGeolocation() {
 		latitude: null,
 		longitude: null,
 		error: null,
-		isLoading: true,
+		isLoading: false,
 	});
 
 	const getLocation = useCallback(() => {
@@ -52,10 +52,6 @@ export function useGeolocation() {
 			},
 		);
 	}, []);
-
-	useEffect(() => {
-		getLocation();
-	}, [getLocation]);
 
 	return { ...state, getLocation };
 }

@@ -3,6 +3,7 @@
 import { FormikButton } from '@vaa/components/button';
 import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
+import { Text } from '@vaa/components/text/text';
 import { useRegister } from '@vaa/hooks/auth';
 import { Formik } from 'formik';
 import { useRouter } from 'next/navigation';
@@ -36,7 +37,7 @@ export function Register() {
 						type="text"
 						placeholder="Stephane? Type here"
 					/>
-					<p className="label">We're using it to create your account</p>
+					<Text className="label">We're using it to create your account</Text>
 				</FormGroup>
 
 				<FormikButton type="submit">Register</FormikButton>

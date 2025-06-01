@@ -2,7 +2,7 @@
 
 import type { inferRouterOutputs } from '@trpc/server';
 import type { inferAsyncIterableYield } from '@trpc/server/unstable-core-do-not-import';
-import { BaseButton } from '@vaa/components/button';
+import { Button } from '@vaa/components/button';
 import type { AppRouter } from '@vaa/server/api/root';
 import { api } from '@vaa/trpc/react';
 import { useState } from 'react';
@@ -43,9 +43,9 @@ export function Chat() {
 					placeholder="Say something..."
 					className="input input-bordered join-item flex-grow"
 				/>
-				<BaseButton type="submit" color="primary" className="join-item">
+				<Button type="submit" color="primary" className="join-item">
 					Send
-				</BaseButton>
+				</Button>
 			</form>
 		</div>
 	);

@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseButton } from '@vaa/components/button';
+import { Button } from '@vaa/components/button';
 import type { VendorActivationForm, VendorAddress } from '@vaa/types/vendor';
 import { FieldArray, useFormikContext } from 'formik';
 import { Plus } from 'react-feather';
@@ -40,7 +40,7 @@ export function VendorAddressesSection() {
 									<VendorAddressFieldset index={index} onRemove={remove} />
 								</div>
 							))}
-							<BaseButton // Corrected component name
+							<Button // Corrected component name
 								type="button"
 								variant="outline"
 								color="primary"
@@ -51,7 +51,7 @@ export function VendorAddressesSection() {
 							>
 								<Plus size={20} />
 								Add New Address
-							</BaseButton>
+							</Button>
 						</div>
 					)}
 				</FieldArray>

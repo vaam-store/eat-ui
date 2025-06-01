@@ -1,9 +1,15 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { X } from 'react-feather';
 import { twMerge } from 'tailwind-merge';
-import type { ButtonColor, ButtonSize, ButtonVariant } from './types';
+import type {
+	ButtonColor,
+	ButtonShape,
+	ButtonSize,
+	ButtonVariant,
+} from './types';
 import {
 	getButtonColorClasses,
+	getButtonShape,
 	getButtonSizeClasses,
 	getButtonVariantClasses,
 	getIconSize,
@@ -13,9 +19,9 @@ import {
 interface BaseButtonOwnProps {
 	loading?: boolean;
 	size?: ButtonSize;
+	shape?: ButtonShape;
 	color?: ButtonColor;
 	variant?: ButtonVariant;
-	circle?: boolean;
 	block?: boolean;
 	disabled?: boolean;
 }
@@ -25,13 +31,14 @@ type BaseButtonProps<As extends ElementType = 'button'> = BaseButtonOwnProps &
 		as?: As;
 	};
 
-export function BaseButton<As extends ElementType = 'button'>({
+export function Button<As extends ElementType = 'button'>({
 	className,
 	loading = false,
 	children,
 	disabled,
 	size,
 	as,
+	shape,
 	color = 'primary',
 	variant = 'fill',
 	circle = false,
@@ -47,6 +54,7 @@ export function BaseButton<As extends ElementType = 'button'>({
 	const colorClasses = getButtonColorClasses(color);
 	const variantClasses = getButtonVariantClasses(variant);
 	const sizeClasses = getButtonSizeClasses(size ?? '');
+	const shapeClasses = getButtonShape(shape);
 
 	return (
 		<Component
@@ -55,6 +63,7 @@ export function BaseButton<As extends ElementType = 'button'>({
 				variantClasses,
 				colorClasses,
 				sizeClasses,
+				shapeClasses,
 				isDisabled && 'btn-disabled',
 				circle && 'btn-circle',
 				block && 'w-full',

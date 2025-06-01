@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseButton } from '@vaa/components/button';
+import { Button } from '@vaa/components/button';
 import { InputField } from '@vaa/components/input/input-field';
 import { useGeolocation } from '@vaa/hooks/use-geolocation';
 import type { VendorAddress } from '@vaa/types/vendor';
@@ -38,7 +38,7 @@ export function VendorAddressFieldset({
 		<fieldset className="fieldset mb-4">
 			<legend className="fieldset-legend">
 				Address {index + 1}
-				<BaseButton
+				<Button
 					type="button"
 					variant="ghost"
 					size="sm"
@@ -46,7 +46,7 @@ export function VendorAddressFieldset({
 					onClick={() => onRemove(index)}
 				>
 					<X size={16} />
-				</BaseButton>
+				</Button>
 			</legend>
 
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -117,7 +117,7 @@ export function VendorAddressFieldset({
 							required
 							disabled={isLoading}
 						/>
-						<BaseButton
+						<Button
 							type="button"
 							color="primary"
 							className="join-item"
@@ -126,7 +126,7 @@ export function VendorAddressFieldset({
 							disabled={isLoading}
 						>
 							{isLoading ? 'Getting Location...' : 'Get My Location'}
-						</BaseButton>
+						</Button>
 					</div>
 					{error && <p className="label text-error">{error.message}</p>}
 				</div>

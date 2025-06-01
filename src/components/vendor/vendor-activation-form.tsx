@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseButton } from '@vaa/components/button/button';
+import { Button } from '@vaa/components/button/button';
 import type { VendorActivationForm as VendorActivationFormType } from '@vaa/types/vendor';
 import { Form, Formik } from 'formik';
 import { useMemo } from 'react';
@@ -57,9 +57,9 @@ export function VendorActivationForm({
 						<VendorAddressesSection />
 
 						<div className="flex justify-end">
-							<BaseButton type="submit" disabled={isSubmitting} color="primary">
+							<Button type="submit" disabled={isSubmitting} color="primary">
 								{isSubmitting ? 'Submitting...' : 'Activate Vendor Profile'}
-							</BaseButton>
+							</Button>
 						</div>
 					</div>
 				</Form>

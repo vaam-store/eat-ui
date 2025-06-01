@@ -16,9 +16,9 @@ const preview: Preview = {
 		withThemeByClassName({
 			themes: {
 				light: '',
-				dark: 'dark',
+				dark: 'vymalo-light-v2',
 			},
-			defaultTheme: 'light',
+			defaultTheme: 'vymalo-light-v2',
 		}),
 	],
 };

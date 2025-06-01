@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { BaseButton, FormikButton } from './';
+import { Button, FormikButton } from './';
 
 // Mock Formik context for FormikButton
 const FormikContext = React.createContext({
@@ -16,9 +16,9 @@ const FormikProvider: React.FC<
 );
 
 // BaseButton stories
-const meta: Meta<typeof BaseButton> = {
+const meta: Meta<typeof Button> = {
 	title: 'Components/Button/BaseButton',
-	component: BaseButton,
+	component: Button,
 	tags: ['autodocs'],
 	argTypes: {
 		color: {
@@ -49,7 +49,7 @@ const meta: Meta<typeof BaseButton> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof BaseButton>;
+type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
 	args: {

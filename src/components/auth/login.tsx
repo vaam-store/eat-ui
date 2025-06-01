@@ -2,6 +2,7 @@
 
 import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
+import { Text } from '@vaa/components/text/text';
 import { useLogin } from '@vaa/hooks/auth';
 import { Formik } from 'formik';
 import Link from 'next/link';
@@ -39,12 +40,13 @@ export function Login() {
 						type="text"
 						placeholder="Enter your username"
 					/>
-					<p className="label">
-						Don't have an account?{' '}
+					<Text className="label">
+						<span>Don't have an account? </span>
+
 						<Link className="link" href="/auth/register">
 							Register here
 						</Link>
-					</p>
+					</Text>
 				</FormGroup>
 
 				<FormikButton type="submit">Login</FormikButton>

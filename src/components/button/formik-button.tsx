@@ -3,10 +3,9 @@
 import { useFormikContext } from 'formik';
 import type { ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { BaseButton } from './button';
+import { Button } from './button';
 
-interface FormikButtonProps
-	extends ComponentPropsWithoutRef<typeof BaseButton> {}
+interface FormikButtonProps extends ComponentPropsWithoutRef<typeof Button> {}
 
 export function FormikButton({
 	className,
@@ -17,7 +16,7 @@ export function FormikButton({
 	const { isValid, isSubmitting } = useFormikContext();
 
 	return (
-		<BaseButton
+		<Button
 			as="button"
 			className={twMerge(
 				className,

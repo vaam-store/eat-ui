@@ -1,3 +1,4 @@
+import { Text } from '@vaa/components/text/text';
 import Image from 'next/image';
 import type { Product } from '../../types/product';
 
@@ -42,9 +43,9 @@ export function ProductCard({ product }: ProductCardProps) {
 				</div>
 				{product.price && (
 					<div className="card-actions justify-end">
-						<p className="font-semibold text-lg text-primary">
+						<Text color="primary" size="lg" className="font-semibold">
 							{product.price}
-						</p>
+						</Text>
 					</div>
 				)}
 			</div>

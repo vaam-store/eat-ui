@@ -1,5 +1,5 @@
-export const mainThemes: MainTheme[] = ['light', 'dark'];
+export const mainThemes: MainTheme[] = ['vymalo-brown-v2', 'vymalo-light-v2'];
 
-export type MainTheme = 'light' | 'dark';
+export type MainTheme = 'vymalo-brown-v2' | 'vymalo-light-v2';
 
 export const themeDataKey = 'vaam-theme';

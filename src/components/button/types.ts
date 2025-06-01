@@ -4,6 +4,7 @@
 
 // Button sizes
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type ButtonShape = 'circle' | 'square';
 
 // Button colors
 export type ButtonColor =

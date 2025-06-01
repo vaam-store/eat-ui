@@ -1,4 +1,9 @@
-import type { ButtonColor, ButtonSize, ButtonVariant } from './types';
+import type {
+	ButtonColor,
+	ButtonShape,
+	ButtonSize,
+	ButtonVariant,
+} from './types';
 
 /**
  * Returns the appropriate button size class
@@ -115,5 +120,21 @@ export function getIconSize(size: ButtonSize | string | undefined): number {
 			return 28;
 		default:
 			return 20; // Default for 'md' or undefined
+	}
+}
+
+/**
+ * Returns the appropriate icon size based on button size
+ */
+export function getButtonShape(
+	shape: ButtonShape | string | undefined,
+): string | undefined {
+	switch (shape) {
+		case 'circle':
+			return 'btn-circle';
+		case 'square':
+			return 'btn-square';
+		default:
+			return undefined;
 	}
 }

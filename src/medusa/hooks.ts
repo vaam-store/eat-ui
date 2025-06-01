@@ -1,5 +1,7 @@
+'use client';
+
 import { useContext } from 'react';
-import { medusaContext } from './context'; // Ensure correct path
+import { medusaContext } from './context';
 
 export function useMedusa() {
 	const contextValue = useContext(medusaContext);

@@ -1,16 +1,15 @@
 'use client';
 
-import { Modal } from '@vaa/components/modal/modal';
-import { useParams, useRouter } from 'next/navigation';
+import { ModalPageWrapper } from '@vaa/components/modal';
+import { useParams } from 'next/navigation';
 
 export default function ModalProductDetailPage() {
-	const router = useRouter();
 	const { id } = useParams();
 	return (
-		<Modal title="Product" open onClose={() => router.back()}>
+		<ModalPageWrapper title={'Product Details'}>
 			<h1>Modal Product: {id}</h1>
 			<p>Details for product {id}.</p>
 			{/* TODO: Display product details, images, reviews summary, Q&A */}
-		</Modal>
+		</ModalPageWrapper>
 	);
 }

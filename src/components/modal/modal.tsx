@@ -1,35 +1,47 @@
 'use client';
 
-import { useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { X } from 'react-feather';
-import { BaseButton } from '../button';
+import { twMerge } from 'tailwind-merge';
+import { Button } from '../button';
 
-type ModalProps = {
+export type ModalProps = {
 	open: boolean;
+	top?: boolean;
 	title: string;
-	onClose: () => void;
+	onCloseAction: () => void;
 	children: ReactNode;
 };
 
-export function Modal({ open, onClose, children, title }: ModalProps) {
+export function Modal({
+	open,
+	onCloseAction,
+	children,
+	title,
+	top = false,
+}: ModalProps) {
 	// Close on ESC key
 	useEffect(() => {
 		if (!open) return;
 		const onKeyDown = (e: KeyboardEvent) => {
-			if (e.key === 'Escape') onClose();
+			if (e.key === 'Escape') onCloseAction();
 		};
 		window.addEventListener('keydown', onKeyDown);
 		return () => window.removeEventListener('keydown', onKeyDown);
-	}, [open, onClose]);
+	}, [open, onCloseAction]);
 
 	return (
 		<>
 			{open && (
 				<dialog
 					open
-					className="modal modal-open modal-middle"
-					onCancel={onClose}
+					className={twMerge(
+						'modal modal-open md:modal-middle',
+						top && 'modal-top',
+						!top && 'modal-bottom',
+					)}
+					onCancel={onCloseAction}
 				>
 					<div
 						className="modal-box"
@@ -43,23 +55,23 @@ export function Modal({ open, onClose, children, title }: ModalProps) {
 					>
 						<div className="flex items-center justify-between">
 							<h3 className="font-bold text-lg">{title}</h3>
-							<BaseButton
-								circle
+							<Button
+								shape="circle"
 								aria-label="Close modal"
-								onClick={onClose}
+								onClick={onCloseAction}
 								type="button"
 							>
 								<X />
-							</BaseButton>
+							</Button>
 						</div>
 						<div className="py-4">{children}</div>
 					</div>
 					<div
 						className="modal-backdrop"
-						onClick={onClose}
+						onClick={onCloseAction}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter' || e.key === ' ') {
-								onClose();
+								onCloseAction();
 							}
 						}}
 						role="button"

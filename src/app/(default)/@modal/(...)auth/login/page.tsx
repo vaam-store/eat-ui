@@ -1,32 +1,12 @@
 'use client';
 
 import { Login } from '@vaa/components/auth/login';
-import { Modal } from '@vaa/components/modal/modal';
-import { useIsAuthenticated } from '@vaa/hooks/auth';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { ModalAuthPageWrapper } from '@vaa/components/modal';
 
-export default function LoginModalPage() {
-	const router = useRouter();
-	const { data, isPending } = useIsAuthenticated();
-
-	useEffect(() => {
-		if (isPending) {
-			return;
-		}
-
-		if (data) {
-			router.back();
-		}
-	}, [data, router, isPending]);
-
-	if (isPending) {
-		return null;
-	}
-
+export default function ModalLoginPage() {
 	return (
-		<Modal title="Login" open onClose={() => router.back()}>
+		<ModalAuthPageWrapper title="Login">
 			<Login />
-		</Modal>
+		</ModalAuthPageWrapper>
 	);
 }

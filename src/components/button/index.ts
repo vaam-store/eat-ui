@@ -3,7 +3,7 @@
  */
 
 // Export components
-export { BaseButton } from './button';
+export { Button } from './button';
 export { FormikButton } from './formik-button';
 
 // Export types

@@ -9,7 +9,7 @@ export function MedusaProvider({ children }: PropsWithChildren) {
 
 	return (
 		<medusaContext.Provider value={medusaClient}>
-			{children}
+			<div id="medusa-app">{children}</div>
 		</medusaContext.Provider>
 	);
 }

@@ -17,13 +17,15 @@ export function ToggleTheme() {
 	}
 
 	return (
-		<label className="swap swap-rotate">
+		<label className="toggle text-base-content">
 			<input
 				onChange={(e) => {
-					const newTheme = e.target.checked ? 'dark' : 'light';
+					const newTheme = e.target.checked
+						? 'vymalo-brown-v2'
+						: 'vymalo-light-v2';
 					setTheme(newTheme);
 				}}
-				checked={resolvedTheme === 'dark'}
+				checked={resolvedTheme === 'vymalo-brown-v2'}
 				id="vaam-theme-play"
 				type="checkbox"
 				className="theme-controller"

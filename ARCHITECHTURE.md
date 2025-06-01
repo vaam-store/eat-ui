@@ -12,7 +12,7 @@ root/
 │   └── ...               # (home, auth, marketplace, product, etc.)
 ├── components/           # All reusable React components
 │   ├── ui/               # Basic UI components (buttons, cards, modals, etc.)
-│   ├── layout/           # Layout-related components (Sidebar, Header, etc.)
+│   ├── layout/           # Layout-related components (Sidebar, DefaultHeader, etc.)
 │   └── index.ts          # Optionally, export all from here
 ├── hooks/                # Custom React hooks
 ├── lib/                  # Business logic and animation/physics helpers

@@ -1,8 +1,9 @@
+import { ShoppingCart } from '@vaa/components/cart';
+
 export default function CartPage() {
 	return (
 		<div>
-			<h1>Shopping Cart</h1>
-			<p>Review your items before checkout.</p>
+			<ShoppingCart />
 		</div>
 	);
 }
