@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useMedusa } from '@vaa/medusa';
+import { useMedusa } from 'src/hooks/medusa';
 type Customer = {
 	first_name: string | null;
 	last_name: string | null;

@@ -1,7 +1,7 @@
 'use client';
 
 import { Modal, type ModalProps } from '@vaa/components/modal/modal';
-import { useIsAuthenticated } from '@vaa/hooks/auth';
+import { useIsAuthenticated } from '@vaa/hooks/auth/auth';
 import { useRouter } from 'next/navigation';
 import { type PropsWithChildren, useEffect } from 'react';
 
@@ -25,6 +25,7 @@ export function ModalAuthPageWrapper({
 	if (isPending) {
 		return null;
 	}
+
 	return (
 		<Modal {...restProps} open onCloseAction={() => router.back()}>
 			{children}

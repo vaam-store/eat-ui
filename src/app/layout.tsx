@@ -6,10 +6,10 @@ import {
 	mainThemes,
 	themeDataKey,
 } from '@vaa/components/theme-toggle/constants';
-import { MedusaProvider } from '@vaa/medusa';
 import { TRPCReactProvider } from '@vaa/trpc/react';
 import { HydrateClient } from '@vaa/trpc/server';
 import { ThemeProvider } from 'next-themes';
+import { MedusaProvider } from 'src/hooks/medusa';
 
 export const metadata: Metadata = {
 	title: 'Create T3 App',

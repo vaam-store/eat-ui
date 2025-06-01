@@ -2,7 +2,7 @@
 
 import type { FindParams, HttpTypes } from '@medusajs/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { useMedusa } from '@vaa/medusa';
+import { useMedusa } from 'src/hooks/medusa';
 
 export function useCategories(
 	query?: FindParams & HttpTypes.StoreProductCategoryListParams,

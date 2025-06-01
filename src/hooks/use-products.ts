@@ -2,7 +2,7 @@
 
 import type { HttpTypes } from '@medusajs/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { useMedusa } from '@vaa/medusa';
+import { useMedusa } from 'src/hooks/medusa';
 
 export function useProducts(query?: HttpTypes.StoreProductListParams) {
 	const medusa = useMedusa();

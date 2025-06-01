@@ -1,7 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
+import { twMerge } from 'tailwind-merge';
+import {Title} from "@vaa/components/text/title";
 
 interface AuthPageHeaderProps {
 	title: string;
@@ -9,23 +12,31 @@ interface AuthPageHeaderProps {
 
 export function AuthPageHeader({ title }: AuthPageHeaderProps) {
 	const pathname = usePathname();
+	const searchParams = useSearchParams();
+
 	const isLoginPage = pathname === '/auth/login';
 	const isRegisterPage = pathname === '/auth/register';
 
+	const queryString = useMemo(() => {
+		return searchParams.toString();
+	}, [searchParams]);
+
 	return (
 		<header className="flex flex-col justify-center gap-4">
-			<h1 className="font-bold text-2xl">{title}</h1>
+			<Title>{title}</Title>
 
 			<div className="tabs tabs-boxed">
 				<Link
-					href="/auth/login"
-					className={`tab ${isLoginPage ? 'tab-active' : ''}`}
+					replace
+					href={`/auth/login?${queryString}`}
+					className={twMerge('tab', isLoginPage && 'tab-active')}
 				>
 					Login
 				</Link>
 				<Link
-					href="/auth/register"
-					className={`tab ${isRegisterPage ? 'tab-active' : ''}`}
+					replace
+					href={`/auth/register?${queryString}`}
+					className={twMerge('tab', isRegisterPage && 'tab-active')}
 				>
 					Register
 				</Link>

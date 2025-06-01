@@ -1,9 +1,13 @@
+import { AuthWrapper } from '@vaa/components/auth/auth-wrapper';
 import { UserOrder } from '@vaa/components/orders/order';
+import { Suspense } from 'react';
 
-export default function CartPage() {
+export default function OrdersPage() {
 	return (
-		<div>
-			<UserOrder />
-		</div>
+		<Suspense>
+			<AuthWrapper>
+				<UserOrder />
+			</AuthWrapper>
+		</Suspense>
 	);
 }

@@ -26,7 +26,7 @@ interface FormProps extends Omit<FormikFormProps, 'children'> {
  */
 export function Form({ children, className, ...props }: FormProps) {
 	return (
-		<FormikForm className={twMerge('form-control gap-4', className)} {...props}>
+		<FormikForm className={twMerge('form-control flex flex-col gap-4', className)} {...props}>
 			{children}
 		</FormikForm>
 	);

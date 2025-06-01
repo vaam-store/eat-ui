@@ -20,7 +20,7 @@ interface FormGroupProps {
  */
 export function FormGroup({ children, className }: FormGroupProps) {
 	return (
-		<div className={twMerge('form-control gap-2 md:gap-4', className)}>
+		<div className={twMerge('flex flex-col gap-4', className)}>
 			{children}
 		</div>
 	);

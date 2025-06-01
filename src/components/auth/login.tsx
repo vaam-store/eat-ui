@@ -3,10 +3,11 @@
 import { Form, FormGroup } from '@vaa/components/form';
 import { InputField } from '@vaa/components/input/input-field';
 import { Text } from '@vaa/components/text/text';
-import { useLogin } from '@vaa/hooks/auth';
+import { useLogin } from '@vaa/hooks/auth/auth';
+import { useRedirects } from '@vaa/hooks/auth/utils';
 import { Formik } from 'formik';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { FormikButton } from '../button';
@@ -17,20 +18,18 @@ const Schema = z.object({
 
 export function Login() {
 	const { login } = useLogin();
-	const searchParams = useSearchParams();
 	const router = useRouter();
-	const initialUsername = searchParams.get('username') || '';
-	const redirectUrl = searchParams.get('redirectUrl') || '/'; // Default to '/' if not provided
+	const { redirectUrl, nextQueryString, queryString } = useRedirects();
 
 	return (
 		<Formik
 			className="flex flex-col items-center justify-center gap-2"
 			onSubmit={async ({ username }) => {
 				await login(username);
-				router.push(redirectUrl); // Redirect to redirectUrl after login
+				router.push(`${redirectUrl}?=${nextQueryString}`);
 			}}
 			validationSchema={toFormikValidationSchema(Schema)}
-			initialValues={{ username: initialUsername }}
+			initialValues={{ username: '' }}
 		>
 			<Form>
 				<FormGroup>
@@ -40,10 +39,15 @@ export function Login() {
 						type="text"
 						placeholder="Enter your username"
 					/>
+
 					<Text className="label">
 						<span>Don't have an account? </span>
 
-						<Link className="link" href="/auth/register">
+						<Link
+							replace
+							href={`/auth/register?${queryString}`}
+							className="link"
+						>
 							Register here
 						</Link>
 					</Text>

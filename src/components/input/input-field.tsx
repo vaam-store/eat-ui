@@ -39,7 +39,7 @@ export function InputField({
 			<input
 				id={props.id || props.name}
 				className={twMerge(
-					'input w-full',
+					'input input-xl w-full',
 					colorClasses,
 					sizeClasses,
 					variantClasses,

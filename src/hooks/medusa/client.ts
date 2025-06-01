@@ -1,6 +1,9 @@
 import Medusa from '@medusajs/js-sdk';
 import { env } from '@vaa/env';
-import { ForageStorage } from './storage';
+import {
+	medusaAuthToken,
+	medusaAuthTokenStorage,
+} from '@vaa/hooks/medusa/constants';
 
 export const createMedusa = () =>
 	new Medusa({
@@ -10,6 +13,11 @@ export const createMedusa = () =>
 		auth: {
 			type: 'jwt',
 			jwtTokenStorageMethod: 'custom',
-			storage: new ForageStorage(),
+			jwtTokenStorageKey: medusaAuthToken,
+			storage: medusaAuthTokenStorage,
+			fetchCredentials: 'include',
+		},
+		globalHeaders: {
+			'x-frontend-app': 'vaam-eat-store',
 		},
 	});
