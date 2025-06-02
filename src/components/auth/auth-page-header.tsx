@@ -1,10 +1,10 @@
 'use client';
 
+import { Title } from '@vaa/components/text/title';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
-import {Title} from "@vaa/components/text/title";
 
 interface AuthPageHeaderProps {
 	title: string;

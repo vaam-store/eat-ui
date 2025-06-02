@@ -8,7 +8,7 @@ import { Button } from '../button';
 
 export type ModalProps = {
 	open: boolean;
-	top?: boolean;
+	position?: 'bottom' | 'top' | 'left' | 'right';
 	title: string;
 	onCloseAction: () => void;
 	children: ReactNode;
@@ -19,7 +19,7 @@ export function Modal({
 	onCloseAction,
 	children,
 	title,
-	top = false,
+	position,
 }: ModalProps) {
 	// Close on ESC key
 	useEffect(() => {
@@ -37,9 +37,12 @@ export function Modal({
 				<dialog
 					open
 					className={twMerge(
-						'modal modal-open md:modal-middle',
-						top && 'modal-top',
-						!top && 'modal-bottom',
+						'modal modal-open modal-bottom backdrop-blur-sm',
+						!position && 'md:modal-middle',
+						position === 'top' && 'md:modal-top',
+						position === 'left' && 'md:modal-start',
+						position === 'right' && 'md:modal-end',
+						position === 'bottom' && 'md:modal-bottom',
 					)}
 					onCancel={onCloseAction}
 				>

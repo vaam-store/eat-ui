@@ -82,8 +82,6 @@ export function useLogin() {
 
 			const response = await startAuthentication({
 				optionsJSON: options,
-				useBrowserAutofill: true,
-				verifyBrowserAutofillInput: true,
 			});
 
 			const attResp = await completeAuth({

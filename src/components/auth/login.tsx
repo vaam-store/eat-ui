@@ -25,8 +25,12 @@ export function Login() {
 		<Formik
 			className="flex flex-col items-center justify-center gap-2"
 			onSubmit={async ({ username }) => {
-				await login(username);
-				router.push(`${redirectUrl}?=${nextQueryString}`);
+				try {
+					await login(username);
+					router.push(`${redirectUrl}?=${nextQueryString}`);
+				} catch (error) {
+					console.error(error);
+				}
 			}}
 			validationSchema={toFormikValidationSchema(Schema)}
 			initialValues={{ username: '' }}
