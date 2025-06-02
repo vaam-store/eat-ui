@@ -1,6 +1,8 @@
 'use client';
 
 import { Button } from '@vaa/components/button';
+import { Text } from '@vaa/components/text/text';
+import { Title } from '@vaa/components/text/title';
 import type { VendorActivationForm, VendorAddress } from '@vaa/types/vendor';
 import { FieldArray, useFormikContext } from 'formik';
 import { Plus } from 'react-feather';
@@ -22,35 +24,35 @@ export function VendorAddressesSection() {
 	};
 
 	return (
-		<div className="card mb-6 bg-base-100 p-6 shadow-xl">
+		<div className="card bg-base-200">
 			<div className="card-body">
-				<h2 className="card-title mb-4 font-bold text-2xl">Vendor Addresses</h2>
-				<p className="mb-6 text-base-content">
+				<Title className="card-title">Vendor Addresses</Title>
+				<Text className="mb-6 text-base-content">
 					Please provide at least one business address. You can add multiple
 					addresses if needed.
-				</p>
+				</Text>
 
 				<FieldArray name="addresses">
 					{({ push, remove }) => (
 						<div>
 							{values.addresses.map((address, index) => (
 								<div
-									key={address.id || crypto.randomUUID()} // Use a stable key
+									className="mb-4 border-base-300 border-b-2 pb-4"
+									key={address.id || crypto.randomUUID()}
 								>
 									<VendorAddressFieldset index={index} onRemove={remove} />
 								</div>
 							))}
-							<Button // Corrected component name
+							<Button
 								type="button"
-								variant="outline"
+								variant="soft"
 								color="primary"
-								className="mt-4"
 								onClick={() =>
 									push({ ...initialAddress, id: crypto.randomUUID() })
-								} // Add a unique ID
+								}
 							>
-								<Plus size={20} />
-								Add New Address
+								<Plus />
+								<span>Add New Address</span>
 							</Button>
 						</div>
 					)}

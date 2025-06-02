@@ -2,11 +2,12 @@
 
 import { Button } from '@vaa/components/button';
 import { InputField } from '@vaa/components/input/input-field';
+import { Text } from '@vaa/components/text/text';
 import { useGeolocation } from '@vaa/hooks/use-geolocation';
 import type { VendorAddress } from '@vaa/types/vendor';
 import { useFormikContext } from 'formik';
 import { useEffect } from 'react';
-import { X } from 'react-feather';
+import { Delete, MapPin } from 'react-feather';
 
 type VendorAddressFieldsetProps = {
 	index: number;
@@ -35,17 +36,19 @@ export function VendorAddressFieldset({
 	};
 
 	return (
-		<fieldset className="fieldset mb-4">
-			<legend className="fieldset-legend">
-				Address {index + 1}
+		<fieldset>
+			<legend className="fieldset-legend flex w-full flex-row items-center justify-between">
+				<Text bold>Address {index + 1}</Text>
+
 				<Button
 					type="button"
-					variant="ghost"
-					size="sm"
+					color="error"
+					variant="soft"
+					shape="circle"
 					className="float-right"
 					onClick={() => onRemove(index)}
 				>
-					<X size={16} />
+					<Delete />
 				</Button>
 			</legend>
 
@@ -96,36 +99,37 @@ export function VendorAddressFieldset({
 					</div>
 					<div className="join w-full">
 						<InputField
-							id={`latitude-${index}`}
 							name={`addresses[${index}].latitude`}
-							label="Latitude"
 							placeholder="Latitude"
 							type="number"
 							step="any"
-							className="join-item w-1/2"
+							className="join-item input input-xl w-1/2"
 							required
 							disabled={isLoading}
+							readOnly
+							simple
 						/>
 						<InputField
-							id={`longitude-${index}`}
 							name={`addresses[${index}].longitude`}
-							label="Longitude"
 							placeholder="Longitude"
 							type="number"
 							step="any"
-							className="join-item w-1/2"
+							className="join-item input input-xl w-1/2"
 							required
 							disabled={isLoading}
+							readOnly
+							simple
 						/>
 						<Button
 							type="button"
 							color="primary"
+							size="xl"
 							className="join-item"
 							onClick={handleGetLocation}
 							loading={isLoading}
 							disabled={isLoading}
 						>
-							{isLoading ? 'Getting Location...' : 'Get My Location'}
+							<MapPin />
 						</Button>
 					</div>
 					{error && <p className="label text-error">{error.message}</p>}

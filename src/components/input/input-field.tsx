@@ -8,14 +8,17 @@ import {
 	getInputVariantClasses,
 } from './utils';
 
-export interface InputFieldProps
-	extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-	label: string;
-	name: string; // Formik field name
+export type InputFieldProps = Omit<
+	InputHTMLAttributes<HTMLInputElement>,
+	'size'
+> & {
+	label?: string;
+	name: string;
 	color?: InputColor;
 	size?: InputSize;
 	variant?: InputVariant;
-}
+	simple?: boolean;
+};
 
 export function InputField({
 	label,
@@ -23,6 +26,7 @@ export function InputField({
 	color = 'neutral',
 	size = 'md',
 	variant = 'default',
+	simple = false,
 	...props
 }: InputFieldProps) {
 	const [field, meta] = useField(props.name);
@@ -30,6 +34,24 @@ export function InputField({
 	const colorClasses = getInputColorClasses(color);
 	const sizeClasses = getInputSizeClasses(size);
 	const variantClasses = getInputVariantClasses(variant);
+
+	if (simple) {
+		return (
+			<input
+				id={props.id || props.name}
+				className={twMerge(
+					'input input-xl w-full',
+					colorClasses,
+					sizeClasses,
+					variantClasses,
+					meta.touched && meta.error ? 'input-error' : '',
+					className,
+				)}
+				{...field}
+				{...props}
+			/>
+		);
+	}
 
 	return (
 		<div className="form-control w-full">

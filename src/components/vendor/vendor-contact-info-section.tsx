@@ -1,6 +1,8 @@
 'use client';
 
 import { InputField } from '@vaa/components/input/input-field';
+import { Text } from '@vaa/components/text/text';
+import { Title } from '@vaa/components/text/title';
 import type { VendorContactInformation } from '@vaa/types/vendor';
 import { useFormikContext } from 'formik';
 
@@ -8,15 +10,13 @@ export function VendorContactInfoSection() {
 	const { values } = useFormikContext<{ contact: VendorContactInformation }>();
 
 	return (
-		<div className="card mb-6 bg-base-100 p-6 shadow-xl">
+		<div className="card bg-base-200">
 			<div className="card-body">
-				<h2 className="card-title mb-4 font-bold text-2xl">
-					Vendor Contact Information
-				</h2>
-				<p className="mb-6 text-base-content">
+				<Title className="card-title">Vendor Contact Information</Title>
+				<Text className="mb-6 text-base-content">
 					Please confirm or update your contact details. These will be used for
 					vendor-related communications.
-				</p>
+				</Text>
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<InputField
 						name="contact.firstName"
