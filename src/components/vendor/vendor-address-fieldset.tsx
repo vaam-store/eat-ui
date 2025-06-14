@@ -8,6 +8,8 @@ import type { VendorAddress } from '@vaa/types/vendor';
 import { useFormikContext } from 'formik';
 import { useEffect } from 'react';
 import { Delete, MapPin } from 'react-feather';
+import {useCountries} from "@vaa/hooks/regions/use-country";
+import {SelectField} from "@vaa/components/input/select-field";
 
 type VendorAddressFieldsetProps = {
 	index: number;
@@ -24,10 +26,14 @@ export function VendorAddressFieldset({
 	const { latitude, longitude, isLoading, error, getLocation } =
 		useGeolocation();
 
+	const countries = useCountries();
+
 	useEffect(() => {
 		if (latitude !== null && longitude !== null) {
-			setFieldValue(`addresses[${index}].latitude`, latitude);
-			setFieldValue(`addresses[${index}].longitude`, longitude);
+			Promise.all([
+				setFieldValue(`addresses[${index}].latitude`, latitude),
+				setFieldValue(`addresses[${index}].longitude`, longitude)
+			]);
 		}
 	}, [latitude, longitude, index, setFieldValue]);
 
@@ -86,13 +92,17 @@ export function VendorAddressFieldset({
 					type="text"
 					required
 				/>
-				<InputField
+				<SelectField
 					name={`addresses[${index}].country`}
 					label="Country"
-					placeholder="USA"
-					type="text"
 					required
-				/>
+				>
+					{countries.map((country) => (
+						<option key={country?.id}>
+							{country?.display_name}
+						</option>
+					))}
+				</SelectField>
 				<div className="col-span-full">
 					<div className="label">
 						<span className="label-text">GPS Coordinates</span>
@@ -103,7 +113,7 @@ export function VendorAddressFieldset({
 							placeholder="Latitude"
 							type="number"
 							step="any"
-							className="join-item input input-xl w-1/2"
+							className='join-item w-1/2 overflow-hidden text-ellipsis'
 							required
 							disabled={isLoading}
 							readOnly
@@ -114,7 +124,7 @@ export function VendorAddressFieldset({
 							placeholder="Longitude"
 							type="number"
 							step="any"
-							className="join-item input input-xl w-1/2"
+							className='join-item w-1/2 overflow-hidden text-ellipsis'
 							required
 							disabled={isLoading}
 							readOnly
@@ -123,7 +133,7 @@ export function VendorAddressFieldset({
 						<Button
 							type="button"
 							color="primary"
-							size="xl"
+							size='xl'
 							className="join-item"
 							onClick={handleGetLocation}
 							loading={isLoading}

@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
 
 			<div className="drawer-content flex flex-col">
 				{/* Navbar */}
-				<div className="navbar bg-base-200">
+				<div className='navbar sticky top-0 z-10 bg-base-200'>
 					<div className="flex-none lg:hidden">
 						<Button
 							as="label"
@@ -52,14 +52,14 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
 				<div className="pt-4 md:px-4">{children}</div>
 			</div>
 
-			<div className="drawer-side">
+			<div className="drawer-side z-20">
 				<div className="drawer-overlay" />
 				<label
 					htmlFor="dashboard-drawer"
 					aria-label="close sidebar"
 					className="drawer-overlay"
 				/>
-				<ul className="menu min-h-full w-80 border-base-300 border-r-1 bg-base-200 p-4 text-base-content">
+				<ul className="menu menu-xl min-h-full w-80 border-base-300 border-r-1 bg-base-200 p-4 text-base-content">
 					<li className="menu-title">
 						<div className="flex flex-row items-center justify-between bg-base-200!">
 							<span>Dashboard</span>

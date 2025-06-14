@@ -1,9 +1,12 @@
-import { CacheHandler } from '@neshca/cache-handler';
-import createLruHandler from '@neshca/cache-handler/local-lru';
-import createRedisHandler from '@neshca/cache-handler/redis-stack';
+import { CacheHandler } from '@fortedigital/nextjs-cache-handler';
+import createLruHandler from '@fortedigital/nextjs-cache-handler/local-lru';
+import createRedisHandler from '@fortedigital/nextjs-cache-handler/redis-strings';
 import { createClient } from 'redis';
 
 CacheHandler.onCreation(async () => {
+	/**
+	 * @type {import('redis').RedisClientType}
+	 */
 	let client;
 
 	try {
@@ -50,14 +53,14 @@ CacheHandler.onCreation(async () => {
 		}
 	}
 
-	/** @type {import("@neshca/cache-handler").Handler | null} */
+	/** @type {import("@fortedigital/nextjs-cache-handler").Handler | null} */
 	let handler;
 
 	if (client?.isReady) {
 		// Create the `redis-stack` Handler if the client is available and connected.
-		handler = await createRedisHandler({
+		handler = createRedisHandler({
 			client,
-			keyPrefix: 'prefix:',
+			keyPrefix: `${process.env.REDIS_PREFIX ?? 'sschool'}:`,
 			timeoutMs: 1000,
 		});
 	} else {

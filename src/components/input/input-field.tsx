@@ -24,7 +24,7 @@ export function InputField({
 	label,
 	className,
 	color = 'neutral',
-	size = 'md',
+	size = 'xl',
 	variant = 'default',
 	simple = false,
 	...props
@@ -40,7 +40,7 @@ export function InputField({
 			<input
 				id={props.id || props.name}
 				className={twMerge(
-					'input input-xl w-full',
+					'input w-full',
 					colorClasses,
 					sizeClasses,
 					variantClasses,
@@ -61,7 +61,7 @@ export function InputField({
 			<input
 				id={props.id || props.name}
 				className={twMerge(
-					'input input-xl w-full',
+					'input w-full',
 					colorClasses,
 					sizeClasses,
 					variantClasses,

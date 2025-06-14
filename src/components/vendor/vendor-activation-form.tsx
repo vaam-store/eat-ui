@@ -6,6 +6,7 @@ import { Form, Formik } from 'formik';
 import { useMemo } from 'react';
 import { VendorAddressesSection } from './vendor-addresses-section';
 import { VendorContactInfoSection } from './vendor-contact-info-section';
+import {ArrowRight} from "react-feather";
 
 export function VendorActivationForm({
 	onSubmit,
@@ -50,17 +51,22 @@ export function VendorActivationForm({
 				}
 			}}
 		>
-			{({ isSubmitting, handleSubmit }) => (
+			{({ isSubmitting, handleSubmit, values }) => (
 				<Form onSubmit={handleSubmit}>
-					<div className="space-y-6">
+					<div className="space-y-6 pb-6">
 						<VendorContactInfoSection />
 						<VendorAddressesSection />
 
 						<div className="flex justify-end">
 							<Button type="submit" disabled={isSubmitting} color="primary">
-								{isSubmitting ? 'Submitting...' : 'Activate Vendor Profile'}
+								<span>Activate Vendor Profile</span>
+								<ArrowRight />
 							</Button>
 						</div>
+
+						<pre>
+							{JSON.stringify(values, null, 4)}
+						</pre>
 					</div>
 				</Form>
 			)}

@@ -22,6 +22,28 @@ export function getInputSizeClasses(
 			return '';
 	}
 }
+/**
+ * Returns the appropriate input size class
+ */
+export function getSelectSizeClasses(
+	size: InputSize | string | undefined,
+): string {
+	if (!size) return '';
+	switch (size) {
+		case 'xs':
+			return 'select-xs';
+		case 'sm':
+			return 'select-sm';
+		case 'md':
+			return 'select-md';
+		case 'lg':
+			return 'select-lg';
+		case 'xl':
+			return 'select-xl';
+		default:
+			return '';
+	}
+}
 
 /**
  * Returns the appropriate input color class
@@ -46,6 +68,34 @@ export function getInputColorClasses(
 			return 'input-warning';
 		case 'error':
 			return 'input-error';
+		default:
+			return null;
+	}
+}
+
+/**
+ * Returns the appropriate input color class
+ */
+export function getSelectColorClasses(
+	color: InputColor | string,
+): string | null {
+	switch (color) {
+		case 'primary':
+			return 'select-primary';
+		case 'secondary':
+			return 'select-secondary';
+		case 'accent':
+			return 'select-accent';
+		case 'neutral':
+			return 'select-neutral';
+		case 'info':
+			return 'select-info';
+		case 'success':
+			return 'select-success';
+		case 'warning':
+			return 'select-warning';
+		case 'error':
+			return 'select-error';
 		default:
 			return null;
 	}
