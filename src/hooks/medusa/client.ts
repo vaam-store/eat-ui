@@ -1,3 +1,5 @@
+'use client';
+
 import Medusa from '@medusajs/js-sdk';
 import { env } from '@vaa/env';
 import {
@@ -18,6 +20,6 @@ export const createMedusa = () =>
 			fetchCredentials: 'include',
 		},
 		globalHeaders: {
-			'x-frontend-app': 'vaam-eat-store',
+			'x-frontend-app': 'vaam-store',
 		},
 	});

@@ -1,16 +1,12 @@
-import type { ReactNode } from 'react';
-import { AuthLayoutAnimation } from './auth-layout-animation';
+import {AuthLayoutAnimation} from './auth-layout-animation';
+import type {PropsWithChildren} from "react";
 
-interface AuthContentWrapperProps {
-	children: ReactNode;
-}
-
-const AuthContentWrapper = ({ children }: AuthContentWrapperProps) => {
-	return (
-		<AuthLayoutAnimation>
-			<div id="content">{children}</div>
-		</AuthLayoutAnimation>
-	);
+const AuthContentWrapper = ({children}: Readonly<PropsWithChildren>) => {
+    return (
+        <AuthLayoutAnimation>
+            <div id="content">{children}</div>
+        </AuthLayoutAnimation>
+    );
 };
 
-export { AuthContentWrapper };
+export {AuthContentWrapper};

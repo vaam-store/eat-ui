@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Button, FormikButton } from './';
+import { Button } from './';
 
 // Mock Formik context for FormikButton
 const FormikContext = React.createContext({
@@ -109,10 +109,10 @@ export const AsLink: Story = {
 	},
 };
 
-// FormikButton stories
-const metaFormik: Meta<typeof FormikButton> = {
+// Button.Formik stories
+const metaFormik: Meta<typeof Button.Formik> = {
 	title: 'Components/Button/FormikButton',
-	component: FormikButton,
+	component: Button.Formik,
 	tags: ['autodocs'],
 	decorators: [
 		(Story, context) => (
@@ -136,7 +136,7 @@ const metaFormik: Meta<typeof FormikButton> = {
 };
 export { metaFormik as metaFormikButton };
 
-type FormikStory = StoryObj<typeof FormikButton>;
+type FormikStory = StoryObj<typeof Button.Formik>;
 
 export const FormikDefault: FormikStory = {
 	args: {

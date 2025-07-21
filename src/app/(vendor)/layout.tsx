@@ -1,10 +1,8 @@
 import { AuthWrapper } from '@vaa/components/auth/auth-wrapper';
-import type { ReactNode } from 'react';
+import {PropsWithChildren, ReactNode} from 'react';
 
 export default function DashboardLayout({
 	children,
-}: {
-	children: ReactNode;
-}) {
+}: Readonly<PropsWithChildren>) {
 	return <AuthWrapper>{children}</AuthWrapper>;
 }

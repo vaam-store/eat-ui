@@ -1,9 +1,7 @@
 'use client';
 
-interface AuthLayoutAnimationProps {
-	children: React.ReactNode;
-}
+import type {PropsWithChildren} from "react";
 
-export function AuthLayoutAnimation({ children }: AuthLayoutAnimationProps) {
+export function AuthLayoutAnimation({ children }: Readonly<PropsWithChildren>) {
 	return <div>{children}</div>;
 }

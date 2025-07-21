@@ -4,6 +4,7 @@
  */
 import {env} from '@vaa/env';
 import withPlugins from 'next-compose-plugins';
+import withSerwistInit from "@serwist/next";
 
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import type {NextConfig} from 'next';
@@ -14,6 +15,7 @@ const shouldCache = (nextConfig: NextConfig): NextConfig => {
     if (isDev) {
         return nextConfig;
     }
+    
     return {
         ...nextConfig,
         cacheHandler: require.resolve('./cache-handler.mjs'),
@@ -21,19 +23,6 @@ const shouldCache = (nextConfig: NextConfig): NextConfig => {
             ...nextConfig.experimental,
         },
     };
-};
-
-const shouldPwa = async (nextConfig: NextConfig): Promise<NextConfig> => {
-    if (!isDev) {
-        const withSerwist = (await import("@serwist/next")).default({
-            // Note: This is only an example. If you use Pages Router,
-            // use something else that works, such as "service-worker/index.ts".
-            swSrc: "app/sw.ts",
-            swDest: "public/sw.js",
-        });
-        return withSerwist(nextConfig);
-    }
-    return nextConfig;
 };
 
 const withImageSizes = (nextConfig: NextConfig): NextConfig => {
@@ -59,27 +48,15 @@ const withImageSizes = (nextConfig: NextConfig): NextConfig => {
                 ...(nextConfig?.images?.remotePatterns || []),
                 {
                     protocol: 'https',
-                    hostname: '*.dev.vymalo.com',
+                    hostname: 's3.ssegning.me',
                 },
                 {
                     protocol: 'https',
-                    hostname: '*.store.vymalo.com',
+                    hostname: 'vaam.store',
                 },
                 {
                     protocol: 'https',
-                    hostname: '*.vymalo.com',
-                },
-                {
-                    protocol: 'https',
-                    hostname: '*.vaam.com',
-                },
-                {
-                    protocol: 'https',
-                    hostname: '*.ssegning.me',
-                },
-                {
-                    protocol: 'https',
-                    hostname: '*.ssegning.com',
+                    hostname: '*.vaam.store',
                 },
             ],
         },
@@ -138,7 +115,12 @@ export default withPlugins(
                 openAnalyzer: isDev,
             }),
         ],
-        [shouldPwa],
+        [
+            withSerwistInit({
+                swSrc: "src/app/sw.ts",
+                swDest: "public/sw.js",
+            })
+        ],
     ],
     nextConfig,
 );

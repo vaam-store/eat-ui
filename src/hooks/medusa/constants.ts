@@ -1,3 +1,5 @@
+'use client';
+
 import { ForageStorage } from '@vaa/hooks/medusa/storage';
 
 export const medusaAuthToken = 'vaam_medusa_auth_token';

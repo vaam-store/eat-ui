@@ -10,6 +10,7 @@ import { TRPCReactProvider } from '@vaa/trpc/react';
 import { HydrateClient } from '@vaa/trpc/server';
 import { ThemeProvider } from 'next-themes';
 import { MedusaProvider } from 'src/hooks/medusa';
+import {PropsWithChildren} from "react";
 
 export const metadata: Metadata = {
 	title: 'Create T3 App',
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<PropsWithChildren>) {
 	return (
 		<html lang="en" suppressHydrationWarning data-theme="light">
 			<TRPCReactProvider>
