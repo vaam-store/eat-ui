@@ -28,7 +28,7 @@
 		"@tanstack/react-query": "^5.83.0",
 		"@trpc/client": "^11.4.3",
 		"@trpc/react-query": "^11.4.3",
-		"@trpc/server": "^11.4.3",
+		"@trpc/server": "^11.8.0",
 		"ai": "^4.3.19",
 		"deep-chat-react": "^2.2.2",
 		"formik": "^2.4.6",
