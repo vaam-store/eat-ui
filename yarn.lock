@@ -3975,12 +3975,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:^11.4.3":
-  version: 11.4.3
-  resolution: "@trpc/server@npm:11.4.3"
+"@trpc/server@npm:^11.8.0":
+  version: 11.8.0
+  resolution: "@trpc/server@npm:11.8.0"
   peerDependencies:
     typescript: ">=5.7.2"
-  checksum: 10c0/3d3fd2a52cb36de5a02c3454d66ac5c739ba53442546aa9a06c79e277951a31827f21b9c135f551c98a197d28f1d6c87aba590dc08c98c15b8ba7a4b9a7653d2
+  checksum: 10c0/1be1e13aab5a6a85cec868fcd303277bbfb64e69ad95fb7f340513a2b7eb7689909e7c9ea8ad8c3b72c5c687ab2da0c5f96daf67d781cb3a8d9283ae6095c451
   languageName: node
   linkType: hard
 
@@ -10667,20 +10667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sha.js@npm:^2.4.0, sha.js@npm:^2.4.8":
-  version: 2.4.12
-  resolution: "sha.js@npm:2.4.12"
-  dependencies:
-    inherits: "npm:^2.0.4"
-    safe-buffer: "npm:^5.2.1"
-    to-buffer: "npm:^1.2.0"
-  bin:
-    sha.js: bin.js
-  checksum: 10c0/9d36bdd76202c8116abbe152a00055ccd8a0099cb28fc17c01fa7bb2c8cffb9ca60e2ab0fe5f274ed6c45dc2633d8c39cf7ab050306c231904512ba9da4d8ab1
-  languageName: node
-  linkType: hard
-
-"sha.js@npm:^2.4.11":
+"sha.js@npm:^2.4.0, sha.js@npm:^2.4.11, sha.js@npm:^2.4.8":
   version: 2.4.12
   resolution: "sha.js@npm:2.4.12"
   dependencies:
@@ -11962,7 +11949,7 @@ __metadata:
     "@testing-library/react": "npm:^16.3.0"
     "@trpc/client": "npm:^11.4.3"
     "@trpc/react-query": "npm:^11.4.3"
-    "@trpc/server": "npm:^11.4.3"
+    "@trpc/server": "npm:^11.8.0"
     "@types/jest": "npm:^30.0.0"
     "@types/lodash": "npm:^4.17.20"
     "@types/node": "npm:^24.0.15"
